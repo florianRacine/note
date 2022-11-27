@@ -97,11 +97,11 @@
 	colback = mytheorembg,
 	frame hidden,
 	boxrule = 0sp,
-	borderline west = {2pt}{0pt}{mytheoremfr},
+	borderline west = {2pt}{0pt}{myg},
 	sharp corners,
 	detach title,
 	before upper = \tcbtitle\par\smallskip,
-	coltitle = mytheoremfr,
+	coltitle = myg,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
 	separator sign none,
@@ -437,14 +437,15 @@
 %================================
 
 \makeatletter
-\newtcbtheorem{question}{Question}{enhanced,
+\newtcbtheorem{question}{Question}{
+        enhanced,
 	breakable,
 	colback=white,
 	colframe=myb!80!black,
 	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
 	fonttitle=\bfseries,
 	title={#2},
-	boxed title size=title,
+        boxed title size=title,
 	boxed title style={%
 			sharp corners,
 			rounded corners=northwest,
@@ -582,6 +583,40 @@
 	#1,
 }
 
+\newtcolorbox{exercice}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Exercice},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SELF MADE COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -600,6 +635,7 @@
 \newcommand{\qs}[2]{\begin{question}{#1}{}#2\end{question}}
 \newcommand{\pf}[2]{\begin{myproof}[#1]#2\end{myproof}}
 \newcommand{\nt}[1]{\begin{note}#1\end{note}}
+\newcommand{\exr}[1]{\begin{exercice}#1\end{exercice}}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}

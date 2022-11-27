@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.16)  27 NOV 2022 15:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.16)  27 NOV 2022 19:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,7 +1428,6 @@ Missing character: There is no ; in font nullfont!
 (./template.toc
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 )
 \tf@toc=\write5
 \openout5 = `template.toc'.
@@ -1443,83 +1442,95 @@ l.23
 
 ]
 Chapter 1.
-<./img/intro.png, id=70, 306.39468pt x 138.5175pt>
+<./img/intro.png, id=79, 306.39468pt x 138.5175pt>
 File: ./img/intro.png Graphic file (type png)
 <use ./img/intro.png>
-Package pdftex.def Info: ./img/intro.png  used on input line 31.
+Package pdftex.def Info: ./img/intro.png  used on input line 32.
 (pdftex.def)             Requested size: 393.1496pt x 177.74774pt.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 35.
+(Font)              size <5> substituted on input line 36.
 
-[2
-
- <./img/intro.png>]
-Chapter 2.
 <./img/partieMu.png, id=87, 164.86594pt x 88.07906pt>
 File: ./img/partieMu.png Graphic file (type png)
 <use ./img/partieMu.png>
-Package pdftex.def Info: ./img/partieMu.png  used on input line 43.
+Package pdftex.def Info: ./img/partieMu.png  used on input line 44.
 (pdftex.def)             Requested size: 147.43204pt x 78.76775pt.
+[2
+
+ <./img/intro.png>]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 8
-7.
-(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
+8.
+ (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
 
  []
 
-[3
-
- <./img/partieMu.png>]
 
 LaTeX Font Warning: Font shape `OT1/cmr/b/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 130.
+(Font)              size <5> substituted on input line 131.
 
-<./img/exemple1.png, id=112, 329.73187pt x 166.37157pt>
+[3 <./img/partieMu.png>]
+<./img/exemple1.png, id=124, 329.73187pt x 166.37157pt>
 File: ./img/exemple1.png Graphic file (type png)
 <use ./img/exemple1.png>
-Package pdftex.def Info: ./img/exemple1.png  used on input line 133.
+Package pdftex.def Info: ./img/exemple1.png  used on input line 134.
 (pdftex.def)             Requested size: 196.57104pt x 99.1865pt.
-[4 <./img/exemple1.png>]
-Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--155
+ [4 <./img/exemple1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
-
- []
-
-[5
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--236
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 
  []
 
-[6] [7] (./template.aux)
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
+
+ []
+
+[6]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+ []
+
+[7
+
+] [8] (./template.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -1529,13 +1540,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 37133 strings out of 478238
- 737498 string characters out of 5850455
- 1132678 words of memory out of 5000000
- 54634 multiletter control sequences out of 15000+600000
- 512974 words of font info for 150 fonts, out of 8000000 for 9000
+ 37190 strings out of 478238
+ 738532 string characters out of 5850455
+ 1154059 words of memory out of 5000000
+ 54684 multiletter control sequences out of 15000+600000
+ 513785 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 96i,13n,102p,772b,2241s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 96i,13n,102p,796b,2239s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/newpx/NewPXBMI_gnu.pfb></usr/share/
 texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/newpx/NewPXMI_gnu.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
@@ -1552,11 +1563,13 @@ ublic/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 fb></usr/share/texmf-dist/fonts/type1/public/newpx/pxbmiaX.pfb></usr/share/texm
 f-dist/fonts/type1/public/newpx/pxbsys.pfb></usr/share/texmf-dist/fonts/type1/p
 ublic/newpx/pxmiaX.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxsys.pf
-b></usr/share/texmf-dist/fonts/type1/public/newtx/txexs.pfb>
-Output written on template.pdf (8 pages, 250949 bytes).
+b></usr/share/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texmf-d
+ist/fonts/type1/public/newtx/txmiaSTbb.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/txfonts/txsya.pfb>
+Output written on template.pdf (9 pages, 280795 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 314 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 354 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 434 words of extra memory for PDF output out of 10000 (max. 10000000)
 

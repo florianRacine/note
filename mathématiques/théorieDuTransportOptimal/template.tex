@@ -21,8 +21,9 @@
 \tableofcontents
 \pagebreak
 
-\chapter{Introduction}
-\section{Formulation du problème}
+\chapter{Cours}
+\section{Introduction}
+\subsection{Formulation du problème}
 \qs{}{Quelle est la façon optimal de transporter un tas de sable dans un trou ?}
 \qs{}{Comment constuire un chateau de sable d'une forme données à partir d'un tas de sable ?}
 
@@ -34,7 +35,7 @@
 
 \nt{ Avec le même nombre de grain de sable et la même masse.}
 
-\chapter{Modélisation}
+\section{Modélisation}
 $\nu \in \mathcal{P}(\mathbb{R})$ ; $\mu \in \mathcal{P}(\mathbb{R})$
 \dfn{}{$\forall A \in \mathcal{P} (\mathbb{R}),\mu[A]$ décrit quelle quantité de sable est dans A.
 }
@@ -133,7 +134,7 @@ Donc, $a \rightarrow c$ et, $b \rightarrow d$
     \includegraphics[width=0.4\textwidth]{exemple1}
     \caption{Solution}
 \end{figure}
-\chapter{La formulation du problème de transfert optimal de Monge}
+\section{La formulation du problème de transfert optimal de Monge}
 \nt{
 On autorise pas le fait de couper les masses.
 A chaque x est associé une unique y.\\
@@ -233,5 +234,91 @@ $\left\{
     \Pi_{i,j} = 0 | sinon\\
 \end{array}
 \right.$\\
+}
+\chapter{TD}
+\section{TD1}
+
+\exr{
+\textbf{Exercice 1.} On considère le coût $c(x, y)=|x-y|$. Dans chacun des cas, donner les solutions des problèmes de Monge et de Kantorovitch.\\
+1. $\mu=\frac{1}{2} \delta_0+\frac{1}{2} \delta_1, \quad \nu=\frac{1}{3} \delta_{-1}+\frac{1}{3} \delta_2+\frac{1}{3} \delta_3$,\\
+2. $\mu=\frac{1}{2} \delta_0+\frac{1}{2} \delta_1, \quad \nu=\frac{1}{2} \delta_0+\frac{1}{2} \delta_1$,\\
+3. $\mu=\frac{1}{3} \delta_0+\frac{1}{3} \delta_1+\frac{1}{3} \delta_2, \quad \nu=\frac{1}{3} \delta_{-1}+\frac{1}{3} \delta_0+\frac{1}{3} \delta_3$.\\
+}
+\sol{
+1)\\
+
+2)\\
+
+3)
+}
+\exr{
+    \textbf{Exercice 2.} Soit $T: \mathbb{R} \rightarrow \mathbb{R}$ définie par $T(x)=x+1, S: \mathbb{R} \rightarrow \mathbb{R}$ définie par $S(x)=2 x$ et $Z: \mathbb{R} \rightarrow \mathbb{R}$ définie par $Z(x)=2-x$. On définit $\mu=\mathbb{1}_{[0,1]}$ et $\nu=\mathbb{1}_{[1,2]}$. A-t-on $T \# \mu=\nu$ ? $S \# \mu=\nu ? Z \# \mu=\nu ?$
+}
+
+\exr{
+    \textbf{Exercice 3.} (Non-unicité pour un coût convexe - Book shifting). On définit $\mu=\mathbb{1}_{[0,2]}$ et $\nu=\mathbb{1}_{[1,3]}$ et le coût $c(x, y)=|x-y|$. Soit $T_1(x)=x+1$ et
+$$
+T_2(x)=\left\{\begin{array}{l}
+x+2, \text { si } x \in[0,1], \\
+x, \text { si } x \in(1,2] .
+\end{array}\right.
+$$
+Montrer que $T_1$ et $T_2$ sont deux applications optimales.
+}
+\exr{
+    \textbf{Exercice 4.} (Non existence d'une application de transport).
+On prend $\mu$ la mesure uniforme sur $[0,1]$ et $\nu$ la mesure uniforme sur $[-1,1]$. On considère le coût $c(x, y)=\left(x^2-y^2\right)^2$.
+1. Pour tout entier $n$ on définit l'application
+$$
+T_n(x)=\left\{\begin{array}{l}
+2 x-\frac{k}{2 n}, \quad \text { pour } x \in\left[\frac{k}{2 n}, \frac{k+1}{2 n}\right] \text { si } k \text { est pair, } \\
+-2 x+\frac{k+1}{2 n}, \quad \text { pour } x \in\left[\frac{k}{2 n}, \frac{k+1}{2 n}\right] \text { si } k \text { est impair. }
+\end{array}\right.
+$$
+Monter que $T_n \# \mu=\nu$ et montrer que
+$$
+\lim _{n \rightarrow \infty} \int_0^1 c\left(x, T_n(x)\right) d \mu(x)=0 .
+$$
+2. En déduire qu'il n'esxite pas d'application de transport qui soit optimale.
+3. Construire un plan de transport optimal.
+}
+\exr{
+\textbf{Exercice 5.} (Transport quadratique et translation).
+On considère le coût $c(x, y)=(x-y)^2$ sur $\mathbb{R}^2$ Pour $a \in \mathbb{R}$, on définitit la translation $\tau_a(x)=x-a$. Soit $f$ et $g$ deux fonctions continues Le but est de montrer que
+$$
+\mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right)=\mathcal{T} c(f, g)+(b-a)^2+2(b-a)\left(m_g-m_f\right),
+$$
+où
+$$
+m_f=\int_{\mathbb{R}} x f(x) d x, \quad m_g=\int_{\mathbb{R}} x g(x) d x .
+$$
+1. Soit $T$ une application optimale qui envoie $f$ sur $g$. On définit $S$ par $S(x)=T(x-a)+b$. Montrer que $S \#\left(f \circ \tau_a\right)=g \circ \tau_b$.
+2. Montrer que
+$$
+\left.\mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right) \leq \int_{\mathbb{R}}|S(x)-x|^2 f\left(\tau_a(x)\right)\right) d x
+$$
+3. En déduire que
+$$
+\mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right) \leq \mathcal{T} c(f, g)+(b-a)^2+2(b-a)\left(m_g-m_f\right),
+$$
+4. De même montrer que
+$$
+\mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right) \geq \mathcal{T} c(f, g)+(b-a)^2+2(b-a)\left(m_g-m_f\right),
+$$
+et en déduire (1)
+5. En déduire que $\mathcal{T}_c\left(\mathbb{1}_{[0,1]}, \mathbb{1}_{[1,2]}\right)=1$.
+}
+\exr{
+\textbf{Exercice 6.} (Non unicité des potentiels de Kantorovitch). Montrer que si $(\varphi, \psi)$ est une paire optimale de potentiel de Kantorovitch, alors, pour tout $a \in \mathbb{R}$, la paire $(\varphi+a, \psi-a)$ l'est aussi.
+}
+\exr{
+\textbf{Exercice 7.} (Potentiels de Kantorovitch). Donner au moins une paire optimale de potentiel de Kantorovitch pour le book-shifting problem.
+}
+\exr{
+\textbf{Exercice 8.} Pour $x \in \mathbb{R}$ et $y \in \mathbb{R}$, on considère le coutt $c(x, y)=\Psi(|x-y|)$ avec
+$$
+\Psi(z)= \begin{cases}1-z, & 0 \leq z \leq 1 \\ z-1, & z \geq 1 .\end{cases}
+$$
+On considère les mesures $\mu=\frac{1}{2}\left(\delta_{-1}+\delta_2\right)$ et $\nu=\frac{1}{3}\left(\delta_{-1}+\delta_0+\delta_1\right)$. Calculer le coût global du transport optimal entre $\mu$ et $\nu$, et donner l'ensemble des plans de transport optimaux.
 }
 \end{document}
