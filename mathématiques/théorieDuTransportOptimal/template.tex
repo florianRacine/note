@@ -92,11 +92,8 @@ On cherche, $\tau_{c} (\mu , \nu ) = INF_{\Pi \in \Pi(\mu, \nu)} (I[\Pi])$
     $\Pi_{0}$ est appelé un \bf{plan de transfert optimal}
 }
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.4\textwidth]{exemple1}
-\end{figure}
-\ex{Kotorovitch}{
+
+\ex{Exemple trivial (Kotorovitch)}{
 $a < b$\\
 $c < d$\\
 $C(x,y) = |x-y|^{2}$\\
@@ -123,14 +120,19 @@ $\Pi(\mu,\nu) = \{\Pi_{\alpha} | \alpha \in [0, 1] \}$
     Trouver : $\tau_{c}( \mu , \nu )$
 }
 \sol{
-$P(\alpha) = ac - bd + ad + cb$\\
-$P(\alpha) = (d-c)(a-b) < 0$\\
-Donc, $P(\alpha)$ atteint son min en $\alpha = 1$\\
+$P(\alpha) =  \frac{\partial I[\Pi_{\alpha}]}{\partial \alpha}$
+$\implies P(\alpha) = -ac - bd + ad + cb$;
+$\implies P(\alpha) = (d-c)(a-b) < 0$\\
+Donc, $I[\Pi_{\alpha}]$ atteint son min en $\alpha = 1$\\
 $\Pi_{0} = \Pi_{\alpha = 1}$\\
-Donc, $a \rightarrow c$\\
-et, $b \rightarrow d$
+Donc, $a \rightarrow c$ et, $b \rightarrow d$
 }
 }
+\begin{figure}[htpb]
+   \centering
+    \includegraphics[width=0.4\textwidth]{exemple1}
+    \caption{Solution}
+\end{figure}
 \chapter{La formulation du problème de transfert optimal de Monge}
 \nt{
 On autorise pas le fait de couper les masses.
