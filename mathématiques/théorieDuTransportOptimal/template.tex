@@ -1,0 +1,235 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\graphicspath{{./img}}
+
+\title{\Huge{Théorie du transport optimal}}
+\author{\huge{Racine Florian}}
+
+
+\renewcommand{\contentsname}{Table des matières}
+\renewcommand{\listfigurename}{Liste des figures}
+
+\begin{document}
+
+\maketitle
+\newpage
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Introduction}
+\section{Formulation du problème}
+\qs{}{Quelle est la façon optimal de transporter un tas de sable dans un trou ?}
+\qs{}{Comment constuire un chateau de sable d'une forme données à partir d'un tas de sable ?}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{intro}
+    \caption{Transporter un tas de sable dans un trou}
+\end{figure}
+
+\nt{ Avec le même nombre de grain de sable et la même masse.}
+
+\chapter{Modélisation}
+$\nu \in \mathcal{P}(\mathbb{R})$ ; $\mu \in \mathcal{P}(\mathbb{R})$
+\dfn{}{$\forall A \in \mathcal{P} (\mathbb{R}),\mu[A]$ décrit quelle quantité de sable est dans A.
+}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{partieMu}
+    \caption{$\mu[A]$}
+\end{figure}
+
+\dfn{}{
+Cout infinitésimal :
+\begin{displaymath}
+C:
+\left|
+  \begin{array}{rcl}
+      \mathbb{R}*\mathbb{R} & \longrightarrow & \mathbb{R} \\
+      (x,y) & \longmapsto & C(x,y) \\
+  \end{array}
+\right.
+\end{displaymath}
+Cout de transporter un grain de sable de x vers y.
+}
+\qs{}{Comment transporter un tas de sable avec un cout global minimal ?}
+\dfn{}{
+Un plan de transport entre les mesures $\mu$  et  $\nu$ est une mesure de probabilité : \\
+$\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginale $\mu$ et $\nu$.
+}
+
+\nt{
+$\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginal $\mu$ et $\nu$ \\
+$\Leftrightarrow \forall $A,B enssemble mesurable avec A$ \subset \mathbb{R}$ et B $\subset \mathbb{R}$
+$\left\{
+\begin{array}{l}
+\Pi[A\times\mathbb{R}] = \mu[A] \\
+\Pi[\mathbb{R}\times B] = \mu[B]
+\end{array}
+\right.$\\
+$\Leftrightarrow \forall \varphi \in C^{0}(\mathbb{R}), \Psi \in C^{0}(\mathbb{R}) : $
+$\displaystyle \int_{{\mathbb{R} \times \mathbb{R}}} {\varphi (x) + \Psi (y)} \: d{\Pi (x,y)}$
+$= \displaystyle \int {\varphi (x)} \: d{\mu (x)}$
+}
+
+\nt{
+On notera, $\Pi ( \mu , \nu )$ = \{ $\Pi \in \mathcal{P} (\mathbb{R} \times \mathbb{R}) | \Pi$
+a pour marginal, $\mu, \nu$ \}\\
+On remarquera que, $\Pi ( \mu , \nu ) \neq \varnothing $\\
+$I[\Pi] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\Pi (x,y)}$ Le cout total assocé au plan de transport optimal.\\
+
+On cherche, $\tau_{c} (\mu , \nu ) = INF_{\Pi \in \Pi(\mu, \nu)} (I[\Pi])$
+}
+
+\dfn{}{
+    S'il existe $\Pi_{0} \in \mathcal{P} ( \mathbb{R} \times \mathbb{R} )$
+    tel que $I[\Pi_{0}] = \tau_{c} (\mu , \nu)$\\
+    $\Pi_{0}$ est appelé un \bf{plan de transfert optimal}
+}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{exemple1}
+\end{figure}
+\ex{Kotorovitch}{
+$a < b$\\
+$c < d$\\
+$C(x,y) = |x-y|^{2}$\\
+$\mu = \frac{1}{2} (\delta_{a} + \delta_{b})$\\
+$\nu = \frac{1}{2} (\delta_{c} + \delta_{d})$
+\qs{}{
+$\Pi ( \mu , \nu) = ?$
+}
+\sol{
+$\Pi_{\alpha} = \frac{1}{2} ( \alpha \delta_{(a,c)} + (1 - \alpha ) \delta_{(a,d)} + (1 - \alpha ) \delta_{(b,c)} + \alpha \delta_{(b,d)})$
+\boldmath
+$\Pi(\mu,\nu) = \{\Pi_{\alpha} | \alpha \in [0, 1] \}$
+\unboldmath
+}
+\qs{}{
+    Calculer : $I[ \Pi ] \forall \Pi \in \Pi( \mu , \nu )$
+}
+\sol{
+    $I[\Pi_{\alpha}] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\Pi_{\alpha} (x,y)}$\\
+    $I[\Pi_{\alpha}] = \frac{1}{2}(\alpha C(a,c) + (1 - \alpha) C(a,d) + (1 - \alpha) C(b,c) + \alpha C(b,d)) $\\
+    $I[\Pi_{\alpha}] = \frac{1}{2}(a^{2}+b^{2}+c^{2}+d^{2}) - \alpha (ac + bd) -(1 - \alpha) (ad+ cb)$
+}
+\qs{}{
+    Trouver : $\tau_{c}( \mu , \nu )$
+}
+\sol{
+$P(\alpha) = ac - bd + ad + cb$\\
+$P(\alpha) = (d-c)(a-b) < 0$\\
+Donc, $P(\alpha)$ atteint son min en $\alpha = 1$\\
+$\Pi_{0} = \Pi_{\alpha = 1}$\\
+Donc, $a \rightarrow c$\\
+et, $b \rightarrow d$
+}
+}
+\chapter{La formulation du problème de transfert optimal de Monge}
+\nt{
+On autorise pas le fait de couper les masses.
+A chaque x est associé une unique y.\\
+On dit que T envoie $\mu$ sur $\nu$ et on note : $T \# \mu = \nu$
+}
+\mprop{}{
+    $\forall A \subset \mathbb{R}$ partie mesurable : $\nu(A) = \mu(T^{-1}(A))$
+}
+$\Leftrightarrow$
+\mprop{}{
+    $\forall \varphi$ continue :$\displaystyle\int_{\mathbb{R}} {\varphi (y)} \: d{\nu (y)} = $
+    $\displaystyle \int_{\mathbb{R}} {(\varphi o T)(x)} \: d{\mu (x)}$\\
+    $\tau_{c}^{M} (\mu , \nu) = INF_{T tq T \#f = \nu} I[T]$\\
+    $I(T) = \displaystyle\int_{\mathbb{R}} {C(x,T(x))} \: d{\mu (x)}$
+}
+\nt{
+Solution de cout optimal d'après Kantorovitch $\le$ Solution de cout optimal d'après Monge\\
+Dans le première exemple ils coincident.\\
+}
+\nt{
+Kantorovitch définit un problème linéare en $\Pi$.\\
+Monge définit un problème non linéare en T.
+}
+
+\nt{
+    Problème de kantorovitch admet toujours une solution $\Pi_{0}$.\\
+    Problème de Monge n'admet pas toujours de solution n'y même d'application qui envoi $\mu$ sur $\nu$.
+}
+\ex{}{
+$\left\{
+\begin{array}{l}
+\mu \in \mathcal{P}(\mathbb{R})\\
+\nu = \delta_{a}\\
+\end{array}
+\right.$\\
+    \textbf{Kantorovitch :} $\Pi(\mu , \nu) = \{ \mu \otimes \delta_{a} \}$\\
+    \textbf{Monge :} Quelles sont les T tel que $T\# \mu = \nu$ ?\\
+    Il en existe une seule: 
+    \begin{displaymath}
+    \forall x | T:
+    \left|
+      \begin{array}{rcl}
+        x & \longrightarrow & a \\
+        \mathbb{R} & \longmapsto & \mathbb{R} \\
+      \end{array}
+    \right.
+    \end{displaymath}
+    $\tau_{c}^{M} (\mu , \nu) = \tau_{c} (\mu , \nu)$\\
+    D'une part : \\
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(T(x),x)} \: d{\mu (x)}$\\
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(0,x)} \: d{\mu (x)}$
+    D'autre part : \\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\Pi (x,y)}$\\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{(\mu \otimes \delta_{a})(x,y)}$\\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\mu (x)} d{\delta_{a}}$\\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,0)} \: d{\mu (x)}$\\
+}
+
+\ex{}{
+$\left\{
+\begin{array}{l}
+    \mu = \frac{1}{n} \sum_{i=1}^{n} \delta_{x_{i}}\\
+    \nu = \frac{1}{n} \sum_{i=1}^{n} \delta_{y_{i}}\\
+\end{array}
+\right.$\\
+Les plans de transporte $\Pi$ entre $\mu$ et $\nu$ peuvent être représenté par des matrices bistochastiques de tailles n.\\
+$0 \le \Pi_{i,j} \le 1$\\
+$\sum_{i=1}^{n} \Pi_{i,j} = 1$\\
+$\sum_{j=1}^{n} \Pi_{i,j} = 1$\\
+\nt{
+On note $\mathcal{B}_{n}$ l'enssemble des matrices bisctochastiques.\\
+}
+Soit $\Pi \in \mathcal{B}_{n}$ : $I[\Pi] = \frac{1}{n} \sum_{i=1}^{n} C(x_{i}, y_{i}) \Pi_{i,j}$\\
+$\tau_{c}(\mu ,\nu) = INF_{\Pi \in \mathcal{B}_{n}} \{\frac{1}{n}\sum_{i=1}^{n} \Pi_{i,j} C(x_{i}, y_{i})$\\
+    Il s'agit d'un problème linéaire de minimisation sur un enssemble convexe.\\
+}
+\mprop{Enssemble convexe}{
+    $\mathcal{B}_{n}$ est convexe $\Leftrightarrow A,B \in \mathcal{B}_{n}$ alors $\forall \theta \in [0,1] | \theta A + (1 - \theta ) B \in \mathcal{B}_{n}$
+}
+\dfn{Points extremaux}
+{
+    L'enssemble des points extremaux de E convexe est l'enssemble des $e \in E$ tel que :\\
+    si $e=\theta e_{1} + (1 - \theta ) e_{2}$ avec $\theta \in [0, 1], e_{1} \in E, e_{2} \in E$\\
+    Alors $\theta = 0$ ou $\theta = 1$
+}
+\thm{Théorème de Choquet}{
+F est linéaire sur un domaine K convexe et compact, alors F admet au moin un minimum.
+Parmi les minimums de F au moin l'un d'eux est un extrema de K.
+}
+\thm{Théorème de Birkhoff}{
+    $\mathcal{B}_{n}$ est convexe et compact.\\
+$\mathcal{B}_{n}$ admet n points extremaux qui sont les matrices de permutations\\
+Ainsi, le min pour le problème de Kantorovitch est atteint pour
+$\left\{
+\begin{array}{l}
+    \Pi_{i,j} = 1 | si j = \sigma(i)\\
+    \Pi_{i,j} = 0 | sinon\\
+\end{array}
+\right.$\\
+}
+\end{document}

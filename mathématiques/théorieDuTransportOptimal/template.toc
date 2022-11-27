@@ -1,0 +1,5 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Formulation du problème}{2}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Modélisation}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}La formulation du problème de transfert optimal de Monge}{5}{chapter.3}%
+\contentsfinish 
