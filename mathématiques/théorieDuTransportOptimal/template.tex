@@ -185,7 +185,7 @@ $\left\{
     $\tau_{c}^{M} (\mu , \nu) = \tau_{c} (\mu , \nu)$\\
     D'une part : \\
     $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(T(x),x)} \: d{\mu (x)}$\\
-    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(0,x)} \: d{\mu (x)}$
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(0,x)} \: d{\mu (x)}$\\
     D'autre part : \\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\Pi (x,y)}$\\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{(\mu \otimes \delta_{a})(x,y)}$\\
@@ -200,7 +200,7 @@ $\left\{
     \nu = \frac{1}{n} \sum_{i=1}^{n} \delta_{y_{i}}\\
 \end{array}
 \right.$\\
-Les plans de transporte $\Pi$ entre $\mu$ et $\nu$ peuvent être représenté par des matrices bistochastiques de tailles n.\\
+Les plans de transports $\Pi$ entre $\mu$ et $\nu$ peuvent être représenté par des matrices bistochastiques de tailles n.\\
 $0 \le \Pi_{i,j} \le 1$\\
 $\sum_{i=1}^{n} \Pi_{i,j} = 1$\\
 $\sum_{j=1}^{n} \Pi_{i,j} = 1$\\
@@ -235,6 +235,102 @@ $\left\{
 \end{array}
 \right.$\\
 }
+
+\section{La dualité de Kantorovitch}
+\subsection{La théorie}%
+
+\thm{Dualité de Kantorovitch}{
+    $\mu \in \mathcal{P} (\mathbb{R}^{n})$\\
+    $\nu \in \mathcal{P} (\mathbb{R}^{n})$\\
+    C semi continue inférieurement ( par exemple C continue)
+    Soit $(\varphi, \psi ) \in \phi_{c}$\\
+    $I(\varphi, \psi) = \displaystyle \int_{\mathbb{R}^{n}} {\varphi(x)} \: d{\mu (x)}$
+    $+ \displaystyle \int_{\mathbb{R}^{n}} {\psi(y)} \: d{\nu (y)}$\\
+    $\phi_{c} = \{ (\varphi, \psi) \in C^{0}$ tq $\varphi (x) + \psi(y) \ge C(x,y)$ presque partout $\}$
+    Alors, $INF_{\Pi \in \Pi(\mu)}I[\Pi] = SUP_{\varphi , \psi} J(\varphi , \psi)$
+}
+\nt{
+    Interprétation :\\
+    On embauche un transporteur.\\
+    Il achète de la masse située en x au pris $\varphi(x)$.\\
+    Il vous débarasse au prix $\displaystyle \int {\varphi(x)} \: d{\mu(x)}$\\
+    Il vous revend de la masse en y au prix $\psi(y)$\\
+    On rachète $\nu$ au prix $\displaystyle \int {\psi(y)} \: d{\nu(y)}$ 
+}
+\begin{myproof}
+    Soit $(\varphi , \psi ) \in \phi_{c}$\\
+    Soit $\Pi \in \Pi(\mu, \nu) | I[\Pi] ) \tau(\mu , \nu)$
+
+    $J(\varphi, \psi) = \displaystyle \int_{\mathbb{R}^{n}} {\varphi(x)} \: d{\mu (x)}$
+    $+ \displaystyle \int_{\mathbb{R}^{n}} {\psi(y)} \: d{\nu (y)}$\\
+    $\ge \displaystyle \int {C(x,y)} \: d{\Pi(x,y)}$
+    $= INF_{\Pi} I[\Pi] = \tau(\mu,\nu)$\\
+    Ainsi, $J(\varphi , \psi) \ge INF_{\Pi} I[Pi]$
+    
+    
+\end{myproof}
+
+\dfn{Les fonction C concaves}{
+    Soit, $\varphi : \mathbb{R}^{n} \rightarrow \mathbb{R} \cup \{ -\infty \}$\\
+    On définit sa fonction C-conjuguée par :
+    \begin{displaymath}
+    \varphi^{c}:
+    \left|
+      \begin{array}{rcl}
+        \mathbb{R}^{n} \ & \longrightarrow & \mathbb{R} \cup - \infty \\
+        x & \longmapsto & a \\
+      \end{array}
+    \right.
+    \end{displaymath}
+}
+
+\mlenma{}{
+lemme
+}
+
+\thm{}{
+    La dualité de Kantorovitch peut être restreinte à des couples de fonction C-conjuguées.\\
+    $SUP_{(\varphi , \psi) \in (C(\mathbb{R}^{n})^{2}} J(\varphi, \psi) = MAX_{(\psi^{c} , \psi)} J(\psi^{c} , \psi)$
+}
+
+\begin{myproof}
+    On montre que le sup est un max.
+\end{myproof}
+
+\cor{Les plans de transferts optimals sont caractérisés par leur support}{
+    Si $(\varphi , \psi)$ est un maximiseur pour le problème de Kantorovitch dual, alors\\
+    $\Pi \in \Pi(\mu , \nu)$ est un minimiseur pour le problème de Kantorovitch primal si et seulement si $\Pi$ est concentrée sur
+    $\{ (x,y) \in \mathbb{R}^{n} \times \mathbb{R}^{n} | \varphi (x) + \psi(y) = C(x,y) \}$
+}
+
+\subsection{Appliquation(s)}
+\mprop{
+On considère un objet indexé par j présent en quantité $\nu_{j}$.\\
+(type(j), quantjté(j)) = (j, $\nu_{j}$)\\
+On considère un consomateur indexé par i présent en quantité $\mu_{i}$.\\
+(type(i), quantité(i)) = (i, $\mu_{i}$)\\
+Utilité de l'objet j pour l'agent i.\\
+\textbf{Hypothèse} L'utilité est tranférable.\\
+L'objet j a une utilité nette $U_{r,j} - P$.\\
+Pour un système de prix $P_{j}$, l'agent i choisit l'objet $j_{p}$ qui maximise  $U_{ij} - P_{j}$.\\
+Transfert optimal: sup $\sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\sum_{j}  \Pi_{ij} = \mu_{i}$ $; \sum_{i}  \Pi_{ij} = \nu_{j}$ 
+}
+
+\nt{
+    \textbf{Explication :}\\
+    $\mu = \sum_{i} \mu_{i} \delta_{x_{i}}$\\
+    $\nu = \sum_{j} \nu_{j} \delta_{y_{j}}$\\
+    $C(i,j) = - u_{i,j}$\\
+    $I[\Pi] = - \sum_{ij} u_{ij} \Pi_{ij}$\\
+    \textbf{Utilité maximale :} $INF_{\Pi} I[\Pi] = SUP \{ - \sum_{i} \varphi_{i} \mu_{i} - \sum_{j} \psi_{j} \nu{j} \}$\\
+    \textbf{Problème dual :} $(D) : INF_{P_{j}} \{ \sum_{j} \nu_{j} P_{j} + \sum_{i} \mu_{i} MAX_{j} (\nu{ij} - P{j}) \}$
+}
+
+\dfn{Prix d'équilibre}{
+    Un système de prix qui satisfait (D) est un prix d'équilibre du problème.
+    Un tel système de prix permet d'atteindre l'optimum global
+}
+
 \chapter{TD}
 \section{TD1}
 
@@ -246,13 +342,32 @@ $\left\{
 }
 \sol{
 1)\\
+$0 \ge \alpha \ge \frac{1}{3}$ \\
+$0 \ge \beta \ge \frac{1}{3}$ \\
+$\frac{1}{6} \ge \alpha + \beta \ge \frac{1}{2}$ \\
+$\Pi_{\alpha , \beta} = \alpha \delta_{(0,-1)} + \beta \delta_{(0,2)} + (\alpha + \beta ) \delta_{(0,3)}$
 
 2)\\
+Equivalent à l'exemple du cours.
 
 3)
 }
 \exr{
     \textbf{Exercice 2.} Soit $T: \mathbb{R} \rightarrow \mathbb{R}$ définie par $T(x)=x+1, S: \mathbb{R} \rightarrow \mathbb{R}$ définie par $S(x)=2 x$ et $Z: \mathbb{R} \rightarrow \mathbb{R}$ définie par $Z(x)=2-x$. On définit $\mu=\mathbb{1}_{[0,1]}$ et $\nu=\mathbb{1}_{[1,2]}$. A-t-on $T \# \mu=\nu$ ? $S \# \mu=\nu ? Z \# \mu=\nu ?$
+}
+\sol{
+    $\displaystyle \int_{[0,1]} {(\varphi o S)(x)} \: d{\mu (x)} = $
+    $\displaystyle\int_{[0,1]} {\varphi (2x)} \: d{x} = $
+    $\frac{1}{2} \displaystyle \int_{[0,2]} {\varphi(y)} \: d{y}$
+
+    $ \Rightarrow S \# \mu = \frac{1}{2} \mathbb{1}_{[0,2]} dx$\\
+
+    $\displaystyle \int_{[0,1]} {(\varphi o T)(x)} \: d{\mu (x)} = $
+    $\displaystyle\int_{[0,1]} {\varphi (1+x)} \: d{x} = $
+    $\displaystyle\int_{[0,2]} {\varphi (y)} \: d{y} = $
+    $\displaystyle\int {\varphi (y)} \: d{\nu (y)}$
+
+    $ \Rightarrow T \# \mu = \nu$
 }
 
 \exr{
@@ -265,6 +380,18 @@ x, \text { si } x \in(1,2] .
 $$
 Montrer que $T_1$ et $T_2$ sont deux applications optimales.
 }
+\sol{
+Vérifiez que :\\
+$T_{1} \# \mu = \nu$ \\
+$T_{2} \# \mu = \nu$ \\
+    $I(T_{1}) = \displaystyle\int_{\mathbb{R}} {C(x,T_{1}(x))} \: d{\mu (x)} = 1$\\
+    $I(T_{2}) = \displaystyle\int_{[0,2]} {C(x,T_{2}(x))} \: d{\mu (x)}$\\
+    $I(T_{2}) = \frac{1}{2} \displaystyle\int_{[0,1]} {|x-T_{2}(x)|} \: d{x} + 0 = 1 $\\
+    $I(T) \ge |\displaystyle\int {|x|} \: d{\mu(x)} - \displaystyle\int {|T(x)|} \: d{\mu(x)}|$\\
+    $I(T) = 1$
+}
+
+
 \exr{
     \textbf{Exercice 4.} (Non existence d'une application de transport).
 On prend $\mu$ la mesure uniforme sur $[0,1]$ et $\nu$ la mesure uniforme sur $[-1,1]$. On considère le coût $c(x, y)=\left(x^2-y^2\right)^2$.
