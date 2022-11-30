@@ -353,7 +353,7 @@ $\left\{
     $\{ (x,y) \in \mathbb{R}^{n} \times \mathbb{R}^{n} | \varphi (x) + \psi(y) = C(x,y) \}$
 }
 
-\subsection{Appliquation(s)}
+\subsection{Application(s)}
 \mprop{
 On considère un objet indexé par j présent en quantité $\nu_{j}$.\\
 (type(j), quantjté(j)) = (j, $\nu_{j}$)\\
@@ -384,7 +384,7 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 \nt{
     Pour le mar. 29 nov. 2022\\
     Lire Guillaume Carlier, Teaching, Transfert Optimal (Chapitre 3 Matching equilibre)\\
-    Faire exercice 5, 6, 7, 8 et 9.
+    Faire exercice 5, 6, 8 et 9.
 }
 
 \chapter{TD}
@@ -518,22 +518,38 @@ $$
 $$
 \mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right) \geq \mathcal{T} c(f, g)+(b-a)^2+2(b-a)\left(m_g-m_f\right),
 $$
-et en déduire (1)
-5. En déduire que $\mathcal{T}_c\left(\mathbb{1}_{[0,1]}, \mathbb{1}_{[1,2]}\right)=1$.
+et en déduire (1) 5. En déduire que $\mathcal{T}_c\left(\mathbb{1}_{[0,1]}, \mathbb{1}_{[1,2]}\right)=1$.
 }
 
 \sol{
+    \begin{enumerate}
+        \item 
     Montrons que : $S\#(f \circ \tau_{a}) = g \circ \tau_{b} $\\
-    On sait que : $T \# f = g$
-    Donc, $\forall \varphi$ continue : $\displaystyle \int {(\varphi \circ T)(x)} \: d{f(x)} = $
-    $\displaystyle \int {\varphi(x)} \: d{g(x)}$\\
+        On sait que T est une appication optimal de f vers g. Donc, : $T \# f = g$\\
+    Donc, $\forall \psi$ continue : $\displaystyle \int {(\psi \circ T)(x)} \: d{f(x)} = $
+    $\displaystyle \int {\psi(x)} \: d{g(x)}$\\
+    Et, $\tau^{c}(f,g) = \displaystyle \int_{\mathbb{R}} {|x-T(x)|^{2}} \: d{f(x)}$\\
     D'autre part, $\forall \varphi$ continue : $\displaystyle \int {(\varphi \circ S)(x)} \: d{(f \circ \tau_{a})(x)} = $
-    $\displaystyle \int {\varphi (T(x-a) + b)} \: d{f(x-a)} = $\\
-    On pose,$y = x+b-a$
+    $\displaystyle \int {\varphi (T(x-a) + b)f(x-a)} \: d{x} $\\
+    On pose,$u = x-a$\\
+    $\displaystyle \int {\varphi (T(u) + b)f(u)} \: d{u} = $
+    $\displaystyle \int {\varphi \circ \tau_{-b} \circ T(u)f(u)} \: d{u} = $
+    $\displaystyle \int {\varphi \circ \tau_{-b} \circ T(u)g(u)} \: d{u} = $
+    $\displaystyle \int {\varphi (u+b)g(u)} \: d{u} $\\
+    On pose, $z = u+b$\\
+    $\displaystyle \int {\varphi (z)g(z-b)} \: d{u} =$
+    $\displaystyle \int {\varphi(z)g \circ \tau_{b}} \: d{z}$\\
+    D'où : $S\#(f \circ \tau_{a}) = g \circ \tau_{b} $\\
 
+    Montrons que :
+    $ \left.\mathcal{T}_c\left(f \circ \tau_a, g \circ \tau_b\right) \leq \int_{\mathbb{R}}|S(x)-x|^2 f\left(\tau_a(x)\right)\right) d x $\\
+    Et, $\left.\mathcal{T}_c(f \circ \tau_{a},g \circ \tau_{b}) = $ 
+    $\displaystyle \int_{\mathbb{R}} {|S(x)-x|^{2}f(x-a)} \: d{x} = $
+    $\displaystyle \int_{\mathbb{R}} {|T(x-a)+b-x|^{2}f(x-a)} \: d{x} = $\\
+    $\mathcal{T}_c(f \circ \tau_{a},g \circ \tau_{b}) = $ 
+    $\displaystyle \int_{\mathbb{R}} {|T(y)+b-y-a|^{2} f(y)} \: d{y} = $
 
-
-    $\displaystyle \int {\varphi(y)} \: d{(g \circ \tau_{b})(y)}$
+    \end{enumerate}
 }
 
 \exr{
@@ -543,10 +559,105 @@ et en déduire (1)
 \textbf{Exercice 7.} (Potentiels de Kantorovitch). Donner au moins une paire optimale de potentiel de Kantorovitch pour le book-shifting problem.
 }
 \exr{
-\textbf{Exercice 8.} Pour $x \in \mathbb{R}$ et $y \in \mathbb{R}$, on considère le coutt $c(x, y)=\Psi(|x-y|)$ avec
+\textbf{Exercice 8.} Pour $x \in \mathbb{R}$ et $y \in \mathbb{R}$, on considère le cout $c(x, y)=\Psi(|x-y|)$ avec
 $$
 \Psi(z)= \begin{cases}1-z, & 0 \leq z \leq 1 \\ z-1, & z \geq 1 .\end{cases}
 $$
 On considère les mesures $\mu=\frac{1}{2}\left(\delta_{-1}+\delta_2\right)$ et $\nu=\frac{1}{3}\left(\delta_{-1}+\delta_0+\delta_1\right)$. Calculer le coût global du transport optimal entre $\mu$ et $\nu$, et donner l'ensemble des plans de transport optimaux.
 }
+\sol{
+    $0 \ge \alpha \ge \frac{1}{3} ;$ 
+    $0 \ge \beta \ge \frac{1}{3} $\\ 
+    $\frac{1}{6} \ge \alpha + \beta \ge \frac{1}{2}$ \\
+    $\Pi_{\alpha , \beta} = \alpha \delta_{(-1,0)} + \beta \delta_{(-1,1)} + (\frac{1}{2} - \alpha - \beta) \delta_{(-1,-1)} + (\frac{1}{3} - \alpha ) \delta_{(2,0)} + (\frac{1}{3} - \beta ) \delta_{(2,1)} +(\alpha + \beta - \frac{1}{6}) \delta_{(2,-1)} $\\
+    $I[\Pi_{\alpha \beta}] = \beta + \frac{1}{2} - \alpha - \beta + \frac{1}{3} - \alpha + 2 \alpha + 2 \beta - \frac{1}{3} = \frac{1}{2} + 2 \beta$\\
+    $\Pi(\mu , \nu) = \{ \Pi_{\alpha \beta = 0} | \frac{1}{6} \ge \alpha \ge \frac{1}{3} \}$ \\
+}
+\exr{
+ \textbf{Exercice 9.} Soit $A \in M_{n, m}(\mathbb{R}), b \in \mathbb{R}^m, c \in \mathbb{R}^n$. Montrer que
+$$
+\sup _{A x \leq b} c . x=\inf _{\substack{y \geq 0 \\ t A y=c}} b . y
+$$
+Notation: on dit que $x \geq 0$ si toutes ses composantes sont positives, et ${ }^t A$ est la transposée de la matrice $A$. Pour $c \in \mathbb{R}^n$ et $x \in \mathbb{R}^n$, on note $x . c$ le produit scalaire entre $c$ et $x$. Indice: S'inspirer de la preuve de la dualité de Kantorovitch.
+}
+\sol{
+    $SUP_{Ax \le b} <C, x> = SUP_{x \in \mathbb{R}^{n}} <C, x> +$
+    $\left\{
+        \begin{array}{l}
+            0 | si Ax \le b\\
+            - \infty | sinon\\
+        \end{array}
+        \right.$\\
+    Or, 
+    $\left\{
+        \begin{array}{l}
+            0 | si Ax \le b\\
+            - \infty | sinon\\
+        \end{array}
+        \right.$
+        $= INF_{y \ge 0} [- <Ax-b,y>]$
+
+    Si $Ax \le b$\\
+    Toutes les composante de $-(Ax-b)$ sont positives ou nulles.
+    $\mathcal{L} y \ge 0$ (si toutes les composantes de y sont positives ou nulles)
+    $< - (Ax + b), y> \ge 0$
+    Pour $y = 0, < - (Ax + b), y> = 0$\\
+
+    Si $Ax \le b$ est faux\\
+    $\exists i | (Ax - b)_{i} \ge 0$\\
+    On prend :
+    $y = \begin{bmatrix}
+        0 \\
+        0 \\
+        \vdots \\
+        n \\
+        \vdots \\
+        0 \\
+        0 \\
+    \end{bmatrix}
+    $
+
+
+        }
+\exr{
+ \textbf{Exercice 10.} On définit pour $x \in \mathbb{R}$
+$$
+G_\sigma(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{x^2}{2 \sigma^2}} .
+$$
+Calculer $W_1\left(G_\sigma, \delta_0\right)$.
+}
+\exr{
+ \textbf{Exercice 11} (Interpolation de McCann). Soient $\mu_0$ et $\mu_1$ des mesures à densité $\rho_0$ et $\rho_1$ par rapport à la mesure de Lebesgue. On considère le coût quadratique $c(x, y)=\|x-y\|_2^2$. Soit $T$ l'application optimale de Monge.
+1. Quel théorème garantit l'existence de $T$ ?
+2. On suppose que $\mathrm{T}$ est inversible. Montrer que $T^{-1}$ envoie $\mu_1$ sur $\mu_0$ de façon optimale.
+3. On définit pour $t \in[0,1]$
+$$
+T_t(x)=(1-t) x+t T(x),
+$$
+et
+$$
+\mu_t=T_t \# \mu_0 .
+$$
+Montrer que $\left(T^{-1}\right)_{1-t}$ envoie $\mu_1$ sur $\mu_t$.
+4. Montrer que
+$$
+W_2\left(\mu_0, \mu_t\right) \leq t W_2\left(\mu_0, \mu_1\right) .
+$$
+5. Montrer que
+$$
+W_2\left(\mu_1, \mu_t\right) \leq(1-t) W_2\left(\mu_0, \mu_1\right) .
+$$
+6. Calculer $W_2\left(\mu_0, \mu_t\right)$.
+7. On prend
+$$
+\rho_0(x)=\left\{\begin{array}{l}
+    x+1, \quad x \in[-1,0] \\
+    1-x, \quad x \in[0,1] \\
+    0, \quad \text { sinon, }
+\end{array} \quad \rho_1(x)= \begin{cases}1, & x \in[3,4], \\
+0, & \text { sinon. }\end{cases}\right.
+$$
+Calculer la densité $\rho_t$ de $\mu_t$.
+}
+
 \end{document}
