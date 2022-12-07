@@ -387,6 +387,127 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
     Faire exercice 5, 6, 8 et 9.
 }
 
+\section{La distance de Wasserstein}
+
+\dfn{Distance de Wasserstein}{
+    On munit $\mathbb{R}^{n}$ d'une distance d.
+    On considère la fonction cout : $C(x,y) = [d(x,y)]^{p}$
+    Par convention, si $p = 0$, par convention, $(d(x,y))^{0} =$
+    $\left\{
+    \begin{array}{l}
+         = 0 | si x=y\\
+        = 1 | sinon\\
+    \end{array}
+    \right.$\\
+}
+
+\dfn{}{
+    $\mathcal{P}_{p}(\mathbb{R}^{n})$
+}
+
+\nt{
+    Si $p \in \mathcal{P}_{p}(\mathbb{R}^{n})$ alors $\forall y \in \mathbb{R}^{n}$,
+    $\displaystyle \int {d(y,x)^{p}} \: d{\mu(x)} < \infty$\\
+    Si d est borné $\mathcal{P}_{p}(\mathbb{R}^{n}) = \mathcal{P}(\mathbb{R}^{n})$ 
+}
+
+\dfn{}{
+    Soit $p \ge 1$\\
+    On définit, $W^{p}_{p}(\mu, \nu) = INF_{\pi \in \Pi (\mu, \nu)} \int_{\mathbb{R}^n \times \mathbb{R}^n} {d(x,y)^{p}} \: d{\pi(x,y)}$\\
+    \nt{
+        On remarque que,
+        $W_{p}(\mu, \nu) = [\tau_{p}(\mu,\nu)]^{\frac{1}{p}}$
+    }
+}
+
+\mlenma{Lemme de }{
+}
+
+\thm{}{
+    $W^{p}$ est une mesure
+
+}
+
+\begin{myproof}
+\dfn{Inégalité Triangulaire}{
+    Soient $\mu_{1}, \mu_{2}, \mu_{3} \in \mathcal{P}_{p}(\mathbb{R}^{n})$
+    $\pi_{1,2}(\mu_{1}) = \mu_{2}$
+    $\pi_{2,3}(\mu_{2}) = \mu_{3}$\\
+    Des plans de transports optimaux.
+    On note $\pi$ la mesure de proba sur $\mathbb{R}^{n} \times \mathbb{R}^{n} \times \mathbb{R}^{n}$ définie dans le lemme définit ci-dessous.\\
+    On note $\pi_{1,3}$ sa marginale sur $\mathbb{R}^{n} \times \mathbb{R}^{n}$ \\
+    On a $\pi_{1,3} \in \Pi(\mu_{1}, \mu_{3})$ mais pas ( forcément ) optimal.
+    \nt{
+        $\Pi$ à pour marginale $\pi_{1,3}$ sur $\mathbb{R}_{1}^{n} \times \mathbb{R}_{2}^{n}$\\
+        $\forall \varphi \in \mathcal(\mathbb{R}^{n} \times \mathbb{R}^{n})$
+        $\int {\varphi(x,y)} \: d{\Pi(x,y,z)}$
+        $= \int {\varphi(x,y)} \: d{\pi_{1,3}(x,y)}$
+        
+    }
+}
+\end{myproof}
+
+\ex{}{
+    $p=2$ \\
+   $W_{2}$ est la distance de Wasserstein quadratique.\\
+    Si $\mu \in \mathcal{P}_{2}(\mathbb{R}^{n}), a \in \mathbb{R}^{n}$\\
+    $W_2 (\mu, \delta_a ) = \int_{\mathbb{R}^n} {(x-a)^{2}} \: d{\mu (x)}$\\
+    Et la moyenne de $\mu$ (son esperance) est définie comme : $m = \int {x d\mu(x)} \: d{x}$\\
+    $m = INF_{a \in \mathbb{R}^{n}} W_2 (\mu , \delta_a)$\\
+    \nt{
+        Cela permet de définir des espérances sur des espaces compliqués dans lesquels on ne peut pas définir d'intégrale.
+    }
+}
+
+\ex{}{
+$p=1$\\
+$\tau_1$ s'apppelle la distance de Rubinstein-Kantorovitch.
+}
+
+\mprop{}{
+
+}
+
+\ex{}{
+    Le cas $\mathbb{R}^{n} = \mathbb{R}$
+}
+
+\dfn{CDF}{
+    $\mu \in \mathcal{P}(\mathbb{R})$
+    On définit sa CDF par :
+    $F(x) = \int {} \: d{} {}$
+    
+}
+
+\dfn{}{
+    On appelle $F^{-1}$ l'inverse généralisé de F définie sur [0,1] par :
+    $F^{-1} (t) = INF_{x \in \mathbb{R} | F(x) > t}$
+}
+
+\mprop{}{
+    $W_{1}(\mu, \nu) = \int_{{0}}^{{1}} {F^{-1} (t) - G^{-1}(t)} \: d{t}$\\
+    $W_{1}(\mu, \nu) = \int_{\mathbb{R}} {|F (x) - G(x)|} \: d{x}$\\
+    $W_{1}(\mu, \nu) = ||F - G||_{L_1(\mathbb{R})}$
+}
+
+\nt{
+    On note, $\mu_1, \ldots, \mu_n \in \mathcal{P}_{2}(\mathbb{R}^{n})$\\
+$\lambda_1, \ldots, \lambda_n \in \mathbb{R}^{+}$
+tel que $\sum_{i=1}^{n} \lambda_i = 1$
+}
+
+\dfn{}{
+    $\mu^{*} = INF_{\mu \in \mathcal{P}_2 (\mathbb{R})} \sum_{i=1}^{n} \lambda_i W_{2}^{2} (\mu , \mu_i)$\\
+    est le barycentre de $(\mu_1, \nu_1) \ldots (\mu_n, \lambda_n)$
+}
+
+\nt{
+    Voir cours :
+    Peyré / Cuturi : Computational Transfert optimal.
+}
+
+
+
 \chapter{TD}
 \section{TD1}
 

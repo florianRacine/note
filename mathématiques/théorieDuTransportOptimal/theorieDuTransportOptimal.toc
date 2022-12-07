@@ -6,6 +6,7 @@
 \contentsline {section}{\numberline {1.4}La dualité de Kantorovitch}{6}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}La théorie}{6}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}Application(s)}{8}{subsection.1.4.2}%
-\contentsline {chapter}{\numberline {2}TD}{10}{chapter.2}%
-\contentsline {section}{\numberline {2.1}TD1}{10}{section.2.1}%
+\contentsline {section}{\numberline {1.5}La distance de Wasserstein}{9}{section.1.5}%
+\contentsline {chapter}{\numberline {2}TD}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}TD1}{11}{section.2.1}%
 \contentsfinish 
