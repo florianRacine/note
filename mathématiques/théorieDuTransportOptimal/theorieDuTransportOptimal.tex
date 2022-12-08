@@ -35,6 +35,7 @@
 
 \nt{ Avec le même nombre de grain de sable et la même masse.}
 
+\newpage
 \section{Modélisation}
 $\nu \in \mathcal{P}(\mathbb{R})$ ; $\mu \in \mathcal{P}(\mathbb{R})$
 \dfn{}{$\forall A \in \mathcal{P} (\mathbb{R}),\mu[A]$ décrit quelle quantité de sable est dans A.
@@ -134,6 +135,8 @@ Donc, $a \rightarrow c$ et, $b \rightarrow d$
     \includegraphics[width=0.4\textwidth]{exemple1}
     \caption{Solution}
 \end{figure}
+
+\newpage
 \section{La formulation du problème de transfert optimal de Monge}
 \nt{
 On autorise pas le fait de couper les masses.
@@ -236,6 +239,7 @@ $\left\{
 \right.$\\
 }
 
+\newpage
 \section{La dualité de Kantorovitch}
 \subsection{La théorie}%
 
@@ -347,7 +351,7 @@ $\left\{
     On montre que le sup est un max.
 \end{myproof}
 
-\cor{Les plans de transferts optimals sont caractérisés par leur support}{
+\cor{Les plans de transferts optimaux sont caractérisés par leur support}{
     Si $(\varphi , \psi)$ est un maximiseur pour le problème de Kantorovitch dual, alors\\
     $\Pi \in \Pi(\mu , \nu)$ est un minimiseur pour le problème de Kantorovitch primal si et seulement si $\Pi$ est concentrée sur
     $\{ (x,y) \in \mathbb{R}^{n} \times \mathbb{R}^{n} | \varphi (x) + \psi(y) = C(x,y) \}$
@@ -387,54 +391,100 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
     Faire exercice 5, 6, 8 et 9.
 }
 
+\newpage
 \section{La distance de Wasserstein}
+\subsection{Définition}
 
-\dfn{Distance de Wasserstein}{
-    On munit $\mathbb{R}^{n}$ d'une distance d.
-    On considère la fonction cout : $C(x,y) = [d(x,y)]^{p}$
-    Par convention, si $p = 0$, par convention, $(d(x,y))^{0} =$
-    $\left\{
-    \begin{array}{l}
-         = 0 | si x=y\\
-        = 1 | sinon\\
-    \end{array}
-    \right.$\\
+\nt{
+On munit $\mathbb{R}^{n}$ d'une distance d.\\
+On considère la fonction cout : $C(x,y) = [d(x,y)]^{p}$\\
+Par convention, si $p = 0$, $(d(x,y))^{0} =$
+$\left\{
+\begin{array}{l}
+    = 0 \text{ si }x=y\\
+    = 1 \text{ sinon}\\
+\end{array}
+\right.$\\
 }
 
-\dfn{}{
+\dfn{Distance}{ 
+    On appelle distance sur un ensemble E toute application d
+    définie sur le produit $E^{2} = E \times E$ et à valeurs dans l'ensemble
+    $\mathbb{R}_{+}$ des réels positifs ou nuls, vérifiant les propriétés suivantes :\\
+    \bf{Symétrie} : $$\forall (a,b) \in E^{2}, d(a,b) = d(b,a)$$
+    \bf{Séparation} : $$\forall (a,b) \in E^{2}, d(a,b) = 0 \Leftrightarrow a = b$$
+    \bf{Inégalité triangulaire} : $$\forall (a,b,c) \in E^{3}, d(a,c) \le d(a,b) + d(b,c)$$
+}
+
+\dfn{ $\mathcal{P}_{p}(\mathbb{R}^{n})$ }{
+    $\displaystyle \mathcal{P}_{p}(\mathbb{R}^{n}) = \{ \mu \in \mathcal{P} (\mathbb{R}^{n}) | \exists x_{0} \in \mathbb{R}^{n} | 
+    \int {[d(x_0 , x)]^{p}} \: d{\mu (x)} < \infty \}$\\
     $\mathcal{P}_{p}(\mathbb{R}^{n})$
+    est l'ensemble des mesures de probabilités qui ont un moment d'ordre p fini.
 }
 
 \nt{
-    Si $p \in \mathcal{P}_{p}(\mathbb{R}^{n})$ alors $\forall y \in \mathbb{R}^{n}$,
-    $\displaystyle \int {d(y,x)^{p}} \: d{\mu(x)} < \infty$\\
-    Si d est borné $\mathcal{P}_{p}(\mathbb{R}^{n}) = \mathcal{P}(\mathbb{R}^{n})$ 
+    On note $\tau_{p} (\mu, \nu) = \tau_{dp} (\mu,\nu)$ le cout associé au transfert optimal de Kantorovitch entre $\mu$ et $\nu$.\\
 }
+
+\nt{
+    \begin{enumerate}
+        \item 
+    Si $\mu \in \mathcal{P}_{p}(\mathbb{R}^{n})$ alors $\forall y \in \mathbb{R}^{n}$,
+    $\displaystyle \int {d(y,x)^{p}} \: d{\mu(x)} < \infty$\\
+        \item 
+    Si d est borné $\mathcal{P}_{p}(\mathbb{R}^{n}) = \mathcal{P}(\mathbb{R}^{n})$ \\
+    En effet si $\exists x_{0} \in \mathbb{R}^{n} \int {[d(x_0 , x)]^{p}} \: d{\mu(x)} < \infty$
+    alors $\forall y \in \mathbb{R}^{n}, d(y,x) = d(y-x_0 + x_0, x) \le d(y-x_0,x) + d(x_0 , x) = d(y-x, x_0) + d(x, x_0 )$\\
+        \item
+    Evidemment $\mathcal{P}_{p}(\mathbb{R}^{n}) \subset \mathcal{P}(\mathbb{R}^{n})$
+    \end{enumerate}
+}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig1chap2}
+    \label{}
+\end{figure}
 
 \dfn{}{
     Soit $p \ge 1$\\
     On définit, $W^{p}_{p}(\mu, \nu) = INF_{\pi \in \Pi (\mu, \nu)} \int_{\mathbb{R}^n \times \mathbb{R}^n} {d(x,y)^{p}} \: d{\pi(x,y)}$\\
     \nt{
-        On remarque que,
-        $W_{p}(\mu, \nu) = [\tau_{p}(\mu,\nu)]^{\frac{1}{p}}$
+        Remarque :\\
+        $W_{p}(\mu, \nu) = [\tau_{p}(\mu,\nu)]^{\frac{1}{p}}$\\
+        Soit $0 \le p \le 1, W_p (\mu, \nu) = \tau_{p} (\mu, \nu)$\\
+        Pour $p=1$\\
+        $$ || f-g ||_{\mathcal{L}^{1} (\mathbb{R})} = \int_{\mathbb{R}} {|f-g|(x)} \: d{x}$$
+        $$ || f-g ||_{\mathcal{L}^{1} (\mathbb{R})} = \int_{\mathbb{R}} {f(x)} \: d{x} + \int_{\mathbb{R}} {g(x)} \: d{x}$$ (car f et g sont à supports disjoints)
+        $$ || f-g ||_{\mathcal{L}^{1} (\mathbb{R})} = \int_{a-\frac{1}{2n}}^{a+\frac{1}{2n}} {n} \: d{x} + \int_{b-\frac{1}{2n}}^{b+\frac{1}{2n}} {n} \: d{x} $$
+        $$ || f-g ||_{\mathcal{L}^{1} (\mathbb{R})} = 2$$
+        $$ W_1 (\mu , \nu) = |a-b|$$
     }
 }
 
-\mlenma{Lemme de }{
-}
-
 \thm{}{
-    $W^{p}$ est une mesure
-
+    $W^{p}$ est une distance $(p \ge 1)$ sur $\mathcal{P}_{p}(\mathbb{R}^n)$\\
+    On l'appelle distance de \textbf{Wasserstein} ou distance de \textbf{Monge-kantorovitch}.
 }
 
 \begin{myproof}
+
+\mlenma{Lemme de Gluing Lemma}{
+    $\mu_1 , \mu_2 , \mu_3$ 3 mesures de probabilités.\\
+    On note $\pi_{12} \in \Pi (\mu_1 , \mu_2)$\\
+    Et, $\pi_{23} \in \Pi (\mu_2 , \mu_3)$\\
+    Alors, $\exists \pi \in \mathcal{P}(\mathbb{R}^{n} \times \mathbb{R}^{n}
+    \times \mathbb{R}^{n})$ qui a pour marginales $\pi_{12}$ sur
+    $\mathbb{R}^{n} \times \mathbb{R}^{n}$ et $\pi_{23}$ sur $\mathbb{R}^{n}
+    \times \mathbb{R}^{n}$
+}
+
 \dfn{Inégalité Triangulaire}{
-    Soient $\mu_{1}, \mu_{2}, \mu_{3} \in \mathcal{P}_{p}(\mathbb{R}^{n})$
-    $\pi_{1,2}(\mu_{1}) = \mu_{2}$
+    Soient $\mu_{1}, \mu_{2}, \mu_{3} \in \mathcal{P}_{p}(\mathbb{R}^{n})$\\
+    $\pi_{1,2}(\mu_{1}) = \mu_{2}$\\
     $\pi_{2,3}(\mu_{2}) = \mu_{3}$\\
-    Des plans de transports optimaux.
-    On note $\pi$ la mesure de proba sur $\mathbb{R}^{n} \times \mathbb{R}^{n} \times \mathbb{R}^{n}$ définie dans le lemme définit ci-dessous.\\
+    Des plans de transports optimaux.\\
+    On note $\pi$ la mesure de proba sur $\mathbb{R}^{n} \times \mathbb{R}^{n} \times \mathbb{R}^{n}$ définie dans le lemme définit ci-dessus.\\
     On note $\pi_{1,3}$ sa marginale sur $\mathbb{R}^{n} \times \mathbb{R}^{n}$ \\
     On a $\pi_{1,3} \in \Pi(\mu_{1}, \mu_{3})$ mais pas ( forcément ) optimal.
     \nt{
@@ -442,16 +492,41 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
         $\forall \varphi \in \mathcal(\mathbb{R}^{n} \times \mathbb{R}^{n})$
         $\int {\varphi(x,y)} \: d{\Pi(x,y,z)}$
         $= \int {\varphi(x,y)} \: d{\pi_{1,3}(x,y)}$
-        
     }
 }
+
+\begin{enumerate}
+    \item 
+        $W_p$ est symétrique, positive et $W_p (\mu , \nu) = 0$ (car d distance, donc $d^{p}(x,y) = 0$ ssi $x=y$)\\
+    \item
+        Si $W_p (\mu , \nu ) = 0$ alors pour $\pi$ de transfert optimal qui envoie $\mu$ sur $\nu$ on a:
+        $$\int {d(x,y)^{p}} \: d{\pi(x,y)} = 0$$
+        d est une distance, donc $SUP(\pi) \subset \{x=y \}$\\
+        Donc $\forall \varphi \in \mathcal{C}^{0}(\mathbb{R}^{n}), \int {\varphi
+        (x)} \: d{\mu (x)} = \int {\varphi (x)} \: d{\pi(x,y)} = \int {\varphi (y)} \:
+        d{\pi(x,y)} =  \int {\varphi (y)} \: d{\nu (y)}$\\
+        Ainsi, $\mu = \nu$
+    \item
+        $W_p (\mu_1 , \mu_3) 
+        \le [\int_{\mathbb{R}^{n}_1 \times \mathbb{R}^{n}_3} {d(x_1,x_3)^{p}} \: d{\pi_{13} (x_1 , x_3)}]^{\frac{1}{p}}
+        = [\int_{\mathbb{R}^{n}_1 \times \mathbb{R}^{n}_{2} \times \mathbb{R}^{n}_{3}} {d(x_1,x_3)^{p}} \: d{\pi(x_1 , x_2 , x_3)}]^{\frac{1}{p}}$\\ 
+        $\le [\int_{\mathbb{R}^{n}_1 \times \mathbb{R}^{n}_{2} \times
+        \mathbb{R}^{n}_{3}} {[d(x_1,x_2) + d(x_2, x_3)]^{p}} \: d{\pi(x_1 , x_2 ,
+        x_3)}]^{\frac{1}{p}}$\\ 
+        Inégalité de Minkowski dans $\mathcal{L}^{p}$\\
+        $\le [\int_{\mathbb{R}^{n}_1 \times \mathbb{R}^{n}_{2} \times \mathbb{R}^{n}_{3}} {d(x_1,x_2)^{p}} \: d{\pi(x_1 , x_2 , x_3)}]^{\frac{1}{p}}
+        + [\int_{\mathbb{R}^{n}_1 \times \mathbb{R}^{n}_{2} \times \mathbb{R}^{n}_{3}} {d(x_2,x_3)^{p}} \: d{\pi(x_1 , x_2 , x_3)}]^{\frac{1}{p}}$
+        $= W_p (\mu_1 , \mu_2) + W_p (\mu_2 , \mu_3)$\\
+        Ainsi, $W_p (\mu_1 , \mu_3) \le W_p (\mu_1 , \mu_2) + W_p (\mu_2 , \mu_3)$\\
+\end{enumerate}
+
 \end{myproof}
 
 \ex{}{
     $p=2$ \\
    $W_{2}$ est la distance de Wasserstein quadratique.\\
-    Si $\mu \in \mathcal{P}_{2}(\mathbb{R}^{n}), a \in \mathbb{R}^{n}$\\
-    $W_2 (\mu, \delta_a ) = \int_{\mathbb{R}^n} {(x-a)^{2}} \: d{\mu (x)}$\\
+    Si $\mu \in \mathcal{P}_{2}(\mathbb{R}^{n}), a \in \mathbb{R}^{n}$ alors, $W_2 (\mu, \delta_a ) = \int_{\mathbb{R}^n} {||x-a||^{2}} \: d{\mu (x)}$\\
+    En effet une seul application T envoie $\mu$ sur $\delta_a$ : $T(x) = a \forall x \in \mathbb{R}^{n}$\\
     Et la moyenne de $\mu$ (son esperance) est définie comme : $m = \int {x d\mu(x)} \: d{x}$\\
     $m = INF_{a \in \mathbb{R}^{n}} W_2 (\mu , \delta_a)$\\
     \nt{
@@ -460,44 +535,67 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 }
 
 \ex{}{
-$p=1$\\
-$\tau_1$ s'apppelle la distance de Rubinstein-Kantorovitch.
+    $p=1$\\
+    $\tau_1$ s'apppelle la distance de Rubinstein-Kantorovitch.
 }
 
 \mprop{}{
-
+    $$ W_1 (\mu , \nu) = SUP_{||\varphi ||_{Lip}\le 1} \int_{\mathbb{R^{n}}} {\varphi (x)} \: d{(\mu - \nu)(x)} $$
+    Avec $||\varphi||_{Lip}= SUP_{(x,y),x \neq y} |\frac{\varphi(x) - \varphi(y)}{x-y}|$
 }
 
 \ex{}{
     Le cas $\mathbb{R}^{n} = \mathbb{R}$
 }
 
-\dfn{CDF}{
+\dfn{Cumulative distribution function : CDF}{
     $\mu \in \mathcal{P}(\mathbb{R})$
     On définit sa CDF par :
-    $F(x) = \int {} \: d{} {}$
-    
+    $F(x) = \int_{]-\infty, x]} {} \: d{\mu} {} = \mu(]-\infty, x]) $
+    Avec F continue à droite.\\
+    $F(-\infty) = 0$\\
+    $F(+\infty) = 0$
 }
 
 \dfn{}{
     On appelle $F^{-1}$ l'inverse généralisé de F définie sur [0,1] par :
-    $F^{-1} (t) = INF_{x \in \mathbb{R} | F(x) > t}$
+    $F^{-1} (t) = INF_{x \in \mathbb{R}}F(x) > t$
 }
 
 \mprop{}{
-    $W_{1}(\mu, \nu) = \int_{{0}}^{{1}} {F^{-1} (t) - G^{-1}(t)} \: d{t}$\\
+    $W_{1}(\mu, \nu) = \int_{{0}}^{{1}} {|F^{-1} (t) - G^{-1}(t)|} \: d{t}$\\
     $W_{1}(\mu, \nu) = \int_{\mathbb{R}} {|F (x) - G(x)|} \: d{x}$\\
     $W_{1}(\mu, \nu) = ||F - G||_{L_1(\mathbb{R})}$
 }
 
+\subsection{Barycentres de Wasserstein}
+
+\ex{
+    $\mu = \frac{1}{2}(\delta_1 + \delta_3)$\\
+    Calculer $F, F^{-1}$ et les tracer.\\
+    \begin{enumerate}
+        \item   
+    $F(x) = \int_{]-\infty, x]} {} \: d{\mu} {} = $
+    $\left\{
+        \begin{array}{l}
+            0 | si x < 1\\
+            \frac{1}{2} | si 1 \le x < 3 \\
+            1 | si 3 \le x\\
+        \end{array}
+    \right.$\\
+        \item
+            $F^{-1}(t) = INF_{x \in \mathbb{R}} F(x) > t$
+    \end{enumerate}
+}
+
 \nt{
     On note, $\mu_1, \ldots, \mu_n \in \mathcal{P}_{2}(\mathbb{R}^{n})$\\
-$\lambda_1, \ldots, \lambda_n \in \mathbb{R}^{+}$
-tel que $\sum_{i=1}^{n} \lambda_i = 1$
+    $\lambda_1, \ldots, \lambda_n \in \mathbb{R}^{+}$
+    tel que $\sum_{i=1}^{n} \lambda_i = 1$
 }
 
 \dfn{}{
-    $\mu^{*} = INF_{\mu \in \mathcal{P}_2 (\mathbb{R})} \sum_{i=1}^{n} \lambda_i W_{2}^{2} (\mu , \mu_i)$\\
+    $\mu^{*} = INF_{\mu \in \mathcal{P}_2 (\mathbb{R}^{n})} \sum_{i=1}^{n} \lambda_i W_{2}^{2} (\mu , \mu_i)$\\
     est le barycentre de $(\mu_1, \nu_1) \ldots (\mu_n, \lambda_n)$
 }
 
@@ -505,8 +603,6 @@ tel que $\sum_{i=1}^{n} \lambda_i = 1$
     Voir cours :
     Peyré / Cuturi : Computational Transfert optimal.
 }
-
-
 
 \chapter{TD}
 \section{TD1}
