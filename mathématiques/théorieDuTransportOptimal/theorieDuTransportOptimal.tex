@@ -67,7 +67,7 @@ $\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginale $\mu$ et $\nu$.
 
 \nt{
 $\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginal $\mu$ et $\nu$ \\
-$\Leftrightarrow \forall $A,B enssemble mesurable avec A$ \subset \mathbb{R}$ et B $\subset \mathbb{R}$
+$\Leftrightarrow \forall $A,B ensemble mesurable avec A$ \subset \mathbb{R}$ et B $\subset \mathbb{R}$
 $\left\{
 \begin{array}{l}
 \Pi[A\times\mathbb{R}] = \mu[A] \\
@@ -188,12 +188,12 @@ $\left\{
     $\tau_{c}^{M} (\mu , \nu) = \tau_{c} (\mu , \nu)$\\
     D'une part : \\
     $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(T(x),x)} \: d{\mu (x)}$\\
-    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(0,x)} \: d{\mu (x)}$\\
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(a,x)} \: d{\mu (x)}$\\
     D'autre part : \\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\Pi (x,y)}$\\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{(\mu \otimes \delta_{a})(x,y)}$\\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\mu (x)} d{\delta_{a}}$\\
-    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,0)} \: d{\mu (x)}$\\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,a)} \: d{\mu (x)}$\\
 }
 
 \ex{}{
@@ -208,18 +208,18 @@ $0 \le \Pi_{i,j} \le 1$\\
 $\sum_{i=1}^{n} \Pi_{i,j} = 1$\\
 $\sum_{j=1}^{n} \Pi_{i,j} = 1$\\
 \nt{
-On note $\mathcal{B}_{n}$ l'enssemble des matrices bisctochastiques.\\
+On note $\mathcal{B}_{n}$ l'ensemble des matrices bisctochastiques.\\
 }
 Soit $\Pi \in \mathcal{B}_{n}$ : $I[\Pi] = \frac{1}{n} \sum_{i=1}^{n} C(x_{i}, y_{i}) \Pi_{i,j}$\\
 $\tau_{c}(\mu ,\nu) = INF_{\Pi \in \mathcal{B}_{n}} \{\frac{1}{n}\sum_{i=1}^{n} \Pi_{i,j} C(x_{i}, y_{i})$\\
-    Il s'agit d'un problème linéaire de minimisation sur un enssemble convexe.\\
+    Il s'agit d'un problème linéaire de minimisation sur un ensemble convexe.\\
 }
-\mprop{Enssemble convexe}{
+\mprop{Ensemble convexe}{
     $\mathcal{B}_{n}$ est convexe $\Leftrightarrow A,B \in \mathcal{B}_{n}$ alors $\forall \theta \in [0,1] | \theta A + (1 - \theta ) B \in \mathcal{B}_{n}$
 }
 \dfn{Points extremaux}
 {
-    L'enssemble des points extremaux de E convexe est l'enssemble des $e \in E$ tel que :\\
+    L'ensemble des points extremaux de E convexe est l'ensemble des $e \in E$ tel que :\\
     si $e=\theta e_{1} + (1 - \theta ) e_{2}$ avec $\theta \in [0, 1], e_{1} \in E, e_{2} \in E$\\
     Alors $\theta = 0$ ou $\theta = 1$
 }
@@ -287,7 +287,7 @@ $\left\{
     \varphi^{c}:
     \left|
       \begin{array}{rcl}
-          \mathbb{R}^{n} \ & \longrightarrow & \mathbb{R} \cup - \{\infty\} \\
+          \mathbb{R}^{n} \ & \longrightarrow & \mathbb{R} \cup \ - \infty\} \\
           y & \longmapsto & INF_{x \in \mathbb{R}^{n}} (C(x,y) - \varphi(x)) \\
       \end{array}
     \right.
@@ -392,7 +392,7 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 }
 
 \newpage
-\section{La distance de Wasserstein}
+\section{La distance de Wasserstein $W_p$}
 \subsection{Définition}
 
 \nt{
@@ -434,7 +434,7 @@ $\left\{
     $\displaystyle \int {d(y,x)^{p}} \: d{\mu(x)} < \infty$\\
         \item 
     Si d est borné $\mathcal{P}_{p}(\mathbb{R}^{n}) = \mathcal{P}(\mathbb{R}^{n})$ \\
-    En effet si $\exists x_{0} \in \mathbb{R}^{n} \int {[d(x_0 , x)]^{p}} \: d{\mu(x)} < \infty$
+    En effet si $\exists x_{0}\in\mathbb{R}^{n}$ tq $\int {[d(x_0 , x)]^{p}} \: d{\mu(x)} < \infty$\\
     alors $\forall y \in \mathbb{R}^{n}, d(y,x) = d(y-x_0 + x_0, x) \le d(y-x_0,x) + d(x_0 , x) = d(y-x, x_0) + d(x, x_0 )$\\
         \item
     Evidemment $\mathcal{P}_{p}(\mathbb{R}^{n}) \subset \mathcal{P}(\mathbb{R}^{n})$
