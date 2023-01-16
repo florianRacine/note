@@ -429,6 +429,7 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 }
 
 \begin{myproof}
+.
 \dfn{Inégalité Triangulaire}{
     Soient $\mu_{1}, \mu_{2}, \mu_{3} \in \mathcal{P}_{p}(\mathbb{R}^{n})$
     $\pi_{1,2}(\mu_{1}) = \mu_{2}$
@@ -461,7 +462,7 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 
 \ex{}{
 $p=1$\\
-$\tau_1$ s'apppelle la distance de Rubinstein-Kantorovitch.
+$\tau_1$ s'appelle la distance de Rubinstein-Kantorovitch.
 }
 
 \mprop{}{
@@ -504,6 +505,231 @@ tel que $\sum_{i=1}^{n} \lambda_i = 1$
 \nt{
     Voir cours :
     Peyré / Cuturi : Computational Transfert optimal.
+}
+
+\section{Estimation numérique du transfert optimal}
+\subsection{L'algorithme de Sinkhorn}
+
+\nt{
+Permet de calculer le transfert optimal entre 2 mesures
+}
+
+\subsubsection{Le contexte}
+\nt {
+    Habituellement présenté dans le cas discret (cela permet de facilement implémenter l'algorithme numériquement)\\
+    $a = \sum_{i=1}^{n} a_i \delta_{x_{i}}$
+    $b = \sum_{j=1}^{m} b_j \delta_{y_{j}}$ \\
+    $C_{ij} = C(x_i,y_j)$ C correspond à une fonction cout\\
+    $ \tau (a,b) = INF\{ \sum_{i,j} C_{ij} P_{ij} | P \in M_{n * m} (\mathcal{R}) \}$ P est une mesure de probabilité \\
+    $P \mathbb{1}_{n} = a$
+    et 
+    $tp \mathbb{1}_n = b$
+    Avec , $\mathbb{1}_m = (1, 1, 1, \ldots , 1)$ m fois
+}
+
+\subsubsection{Régulation entropique}
+\paragraph{Formulation}
+.
+\dfn{L'entropie de couplage}{
+    L'entropique discrète d'une matrice de couplage (une matrice qui envoi une mesure a sur une mesure b)\\
+    $H(P) = \sum_{i,j} P_{ij} ((log P_{ij}) - 1)$\\
+    Avec, P une matrice bistochastique (la somme des éléments de chaque colonne vaut 1)
+}
+
+\nt{
+    Remarque  le terme -1 ne sert à rien.\\
+    On pourrait avoir :
+    $H(P) = \sum_{i,j} P_{ij} ((log P_{ij}))$\\
+    car,\\
+    $\sum_{i,j} P_{ij} = 1$\\
+    $\int d\pi = 1 $ avec $\pi \in \mathcal{P} (\mathbb{R}^{n} \times \mathbb{R}^{n})$
+}
+\mprop{}{
+    $H: M_{n \times m}(\mathbb{R}) \rightarrow \mathbb{R}^{+}$\\
+
+    $\nabla H(P) = (log(P_{ij}) + 1)_{i,j}$\\
+    $\nabla^{2} H(P) = diag(\frac{1}{P_{ij}})$\\
+    $diag(P_{ij})$ Correspond a une matrice avec tous les termes de P sur la diagonale
+}
+\begin{myproof}
+    Montrons que, $\nabla H(P) = (log(P_{ij})_{i,j}$\\
+    $(P, Q) \in (M_{n \times m} (\mathbb{R}))^{2}$\\
+    $H(P+ \delta Q) = H(P) + \delta < \nabla H(P) , Q > + \frac{\delta ^{2}}{2} <\nabla^{2} H(P) Q, Q> + \theta (\delta^{2})$
+    Formule Taylor\\
+    $H(P + \delta Q) = \sum_{ij} ((P_{ij} + \delta Q_{ij}) log(P_{ij} + \delta Q_{ij})$
+    Par définition \\
+    En developpant la formule de la définition on montre qu'elle est égale à la formule de Taylor
+    On la développe à l'aide d'un développement limité sur le log.
+\end{myproof}
+
+\nt{
+    Tout cela permet de montrer que l'entropie est \textbf{convexe} sur l'ensemble des matrices bistochastiques (qui est un ensemble convexe)
+}
+
+\exr{
+Parmi les couplage P, quels sont ceux qui minimisent l'entropie ?\\
+}
+
+\sol{
+    Soit $P^*$ un min de H sous la contrainte $\sum_{ij} P_{ij} = 1$\\
+    Avec, $F(P^*) = 0$ ou $F(P) = \sum_{ij} P_{ij} - 1$
+    Ce qui correspond à un problème d'optimisation sous contrainte.\\
+    Alors, $\exists \lambda \in \mathbb{R}$ tq $\nabla H (P^{*}) + \lambda \nabla F(P^{*}) = 0$
+    et, $F(P^{*}) = 0$\\
+    $\forall ij (log P_{ij} + 1 + \lambda) = 0$\\
+    $\forall ij  P_{ij} = \frac{1}{nm}$\\
+
+    Donc l'entropie est minimal lorsque tous les points de a sont coupler avec tous les points de b.
+}
+
+\exr{
+    $\tau^{\varepsilon} = INF_{P \in \Pi(a,b)} \{ <P, C> + \varepsilon H(P)\}$\\
+    C'est un problème d'optimisation (comme pour le probleme de transfert optimal) mais la fonction à minimiser est convexe.
+    En effet c'est la somme d'une fonction convexe et d'une fonction linéaire. 
+    Minimiser une fonction convexe est beaucoup plus simple que de minimiser une fonction linéaire.\\
+    On notera se problème : 
+    $(T.O^{\varepsilon})$
+}
+
+\thm{}{
+    La solution $(P^{\varepsilon})$ de $(T.O^{\varepsilon})$\\
+    \begin{itemize}
+        \item   
+    converge vers le couplage d'entropie minimal : $a \otimes b = a^{t}b$ quand $\varepsilon \rightarrow \mathcal{1}$
+        \item
+    converge vers $P^{0}$ quand $\varepsilon \rightarrow 0$\\
+            Ou $P^{0} = argmax\{H(P)\}$
+    \end{itemize}
+    $P \in \Pi(a,b)$
+    $<P,C> = \tau^{c}(a,b)$
+}
+
+\begin{myproof}
+    On note $(P^{\varepsilon})$ l'unique solution de $(T.O^{\varepsilon})$\\
+    $\forall \varepsilon P^{\varepsilon} \in \Pi(a,b)$ qui est borné\\
+    On peut extraire une sous suite $P^{\varepsilon} \rightarrow P^{0}$\\
+    $\Pi(a,b)$ est fermé dans $M_{n\times m}(\mathbb{R})$\\
+    Donc, $P^{0} \in \Pi(a,b)$\\
+    Fixons un $P^{*} \in \Pi(a,b)$\\
+    Tel que par définition, $<C,P^{*}> = \sum_{ij} C_{ij} P_{ij} = \tau_{c} (a,b)$\\
+    On a $<C,P^{*}> \leq <C,P^{\varepsilon}> \forall \varepsilon$ (En effet $P^*$ est optimal pour T.O)\\
+    D'autre part, $<C,P^{*}> + \varepsilon H(P^{*}) \geq <C,P^{\varepsilon}> + \varepsilon  H(p^{\varepsilon}) $
+
+
+\end{myproof}
+
+
+\subsubsection{Réécriture du problème de transfert optimal avec regularisation entropique}
+
+\dfn{Kullback-Leibler divergence}{
+    $KL(P|Q) = \sum_{ij} P_{ij} log(\frac{P_{ij}}{Q_{ij}})$
+}
+
+\dfn{Le rayon de Gibbs}{
+$\varepsilon \geq 0$ fixé\\
+Le rayon de Gibbs associé au cout c est défini par:
+$K^{\varepsilon}_{ij} = exp(- \frac{C_{ij}}{\varepsilon})$
+}
+
+\mprop{
+    $P^{\varepsilon} = argmin_{P \in \Pi(a,b)} KL(P | K^{\varepsilon})$
+}
+
+\subsubsection{L'algorithme de Sinkhorn}
+
+\mprop{
+    L'unique solution de $(T.O)^{\varepsilon}$ est de la forme :\\
+    $P^{\varepsilon} = U^{\varepsilon} K^{\varepsilon} V^{\varepsilon}$\\
+    Ou $U^{\varepsilon} \in \mathbb{R}^{n}$\\
+    $V^{\varepsilon} \in \mathbb{R}^{n}$\\
+    $K^{\varepsilon} = $ noyau de Gibbs\\
+    $P^{\varepsilon}$ minimise $<C,P> + \varepsilon H(P)$\\
+    Sous les contraintes :\\
+    \begin{itemize}
+        \item $P \mathbb{1}_n = a$ (n contraintes)
+        \item $tP \mathbb{1}_n = b$ (m contraintes)
+    \end{itemize}
+    On peut le résoudre avec les multiplicateurs de Lagrange
+}
+
+\nt{
+    On peut écrire que $P = UKV$ sous forme matricielle\\
+    $P = diag(U) . K . diag(V)$\\
+    Ainsi les contraintes $P \in \Pi(a,b)$ se réécrivent \\
+    $diag(U) K diag(V) \mathbb{1}_{n} = 0$\\
+    ici $a = U \odot KV$\\
+    $diag(V)^{t} K diag(U) \mathbb{1}_{n} = 0$\\
+    ici $b = V \odot ^{t} KU$
+}
+
+\dfn{}{
+    $\frac{U}{W} = (\frac{u_1}{w_1},\frac{u_2}{w_2},\ldots,\frac{u_n}{w_n}) $
+}
+
+\subsubsection{L'algorithme de Sinkhorn}
+\sol{
+    .\\
+    $v^{O} \in \mathbb{R}^{n}$ (on le choisit)\\
+    $l = 0$\\
+    $u^{(l+1)} = \frac{a}{Kv^{(l)}}$ ; $v^{(l+1)} = \frac{b}{^{t}K u^{(l+1)}}$
+}
+
+\nt{
+    \begin{itemize}
+        \item Meilleur convergence quand $\varepsilon$ grand\\
+        \item Complexité : $\frac{n^{2} log(n)}{\tau^{3}}$
+    \end{itemize}
+
+}
+
+\subsection{Formulation dynamique}
+
+\nt{
+    Cadre continu \\
+    Mesures à densités (i.e des fonctions)\\
+    $\mu_0 = \varphi_0 dx$\\
+    $\mu_1 = \varphi_1 dx$\\
+    $C(x,y) = ||x-y||^{2}$
+}
+
+\subsubsection{Théorème de Brenier}
+\thm{Théorème de Brenier}{
+    Si $\mu_0$ et $\mu_1$ sont à densité par rapport à Lebesgue, alors il
+    existe un unique plan de transport $\pi$ et ce plan est supporté sur le
+    graphe $(x,T(x))$ d'une application de Monge T.
+}
+
+\ex{Application}{
+    En 1D, si $\varphi$ est convexe, $\nabla \varphi = \varphi '$ est croissante\\
+    Ce théorème pemet de généraliser la notion en multi dimension.
+}
+\subsubsection{L'équation de transport (1D)}
+\exr{
+    Résoudre l'équation de transport suivante :\\
+    \begin{itemize}
+        \item $\frac{\partial \varphi}{\partial t} (t,x) + \frac{\partial}{\partial x}(v(t,x) \varphi(t,x)) = 0$\\
+        \item $\varphi (0,x) = \varphi_0 (x)$\\
+    \end{itemize}
+    Inconnue : $\varphi$\\
+    Donnée : v
+}
+
+\sol{
+    La solution de 
+    $\frac{\partial \varphi}{\partial t} (t,x) + c \frac{\partial}{\partial x}(\varphi(t,x)) = 0$\\
+    est $\varphi(t,x) = \varphi_0 (x - ct)$\\
+    On peut le vérifier en placant la solution dans l'équation de transport.
+}
+
+\thm{Formulation dynamique du transport optimal (Théorème de Benamau/Brenier)}{
+    $W^{2}_{2}(\rho_{0}, \rho_{1})$
+    $ = \tau_{c}^{2} (\rho_{0} , \rho_{1})$
+    $ = INF \{ \int_{0}^{1} \int |v(t,x)|^{2} \varphi (t,x) dxdt \}$
+}
+
+\nt{
+    Interpretation du barycentre de Wasserstein de 2 mesures au sens du transfert optimal.\\
+    En particulier $\varphi( \frac{1}{2},x)$ est la moyenne au sens de Wasserstein entre $\rho_0$ et $\rho_1$ une nouvelle méthode numérique pour calculer $W^{2}$
 }
 
 

@@ -7,6 +7,17 @@
 \contentsline {subsection}{\numberline {1.4.1}La théorie}{6}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}Application(s)}{8}{subsection.1.4.2}%
 \contentsline {section}{\numberline {1.5}La distance de Wasserstein}{9}{section.1.5}%
-\contentsline {chapter}{\numberline {2}TD}{11}{chapter.2}%
-\contentsline {section}{\numberline {2.1}TD1}{11}{section.2.1}%
+\contentsline {section}{\numberline {1.6}Estimation numérique du transfert optimal}{11}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}L'algorithme de Sinkhorn}{11}{subsection.1.6.1}%
+\contentsline {subsubsection}{Le contexte}{11}{section*.2}%
+\contentsline {subsubsection}{Régulation entropique}{11}{section*.3}%
+\contentsline {paragraph}{Formulation}{11}{section*.4}%
+\contentsline {subsubsection}{Réécriture du problème de transfert optimal avec regularisation entropique}{12}{section*.5}%
+\contentsline {subsubsection}{L'algorithme de Sinkhorn}{13}{section*.6}%
+\contentsline {subsubsection}{L'algorithme de Sinkhorn}{13}{section*.7}%
+\contentsline {subsection}{\numberline {1.6.2}Formulation dynamique}{13}{subsection.1.6.2}%
+\contentsline {subsubsection}{Théorème de Brenier}{14}{section*.8}%
+\contentsline {subsubsection}{L'équation de transport (1D)}{14}{section*.9}%
+\contentsline {chapter}{\numberline {2}TD}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}TD1}{15}{section.2.1}%
 \contentsfinish 
