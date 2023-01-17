@@ -35,6 +35,7 @@
 
 \nt{ Avec le même nombre de grain de sable et la même masse.}
 
+\newpage
 \section{Modélisation}
 $\nu \in \mathcal{P}(\mathbb{R})$ ; $\mu \in \mathcal{P}(\mathbb{R})$
 \dfn{}{$\forall A \in \mathcal{P} (\mathbb{R}),\mu[A]$ décrit quelle quantité de sable est dans A.
@@ -51,7 +52,7 @@ Cout infinitésimal :
 C:
 \left|
   \begin{array}{rcl}
-      \mathbb{R}*\mathbb{R} & \longrightarrow & \mathbb{R} \\
+      \mathbb{R} \times \mathbb{R} & \longrightarrow & \mathbb{R} \\
       (x,y) & \longmapsto & C(x,y) \\
   \end{array}
 \right.
@@ -59,81 +60,110 @@ C:
 Cout de transporter un grain de sable de x vers y.
 }
 \qs{}{Comment transporter un tas de sable avec un cout global minimal ?}
-\dfn{}{
+
+\dfn{Tribu}{
+    Soit $\Omega$ un espace. On note $\mathcal{P}(\Omega)$ l'ensemble des parties de $\Omega$.
+    Un ensemble d'ensembles $\mathcal{A} \subset \mathcal{P}(\Omega)$
+    est appelé \textbf{tribu} s'il vérifie les trois propriétés suivantes:
+    \begin{itemize}
+        \item $\varnothing \in \mathcal{A}$ (contient l'ensemble vide)
+        \item $A \in \mathcal{A} \Rightarrow A^{c} \in \mathcal{A}$ (stable par complémentaire)
+        \item $(A_n)_{n \geq 1} \subset \mathcal{A} \Rightarrow \cup_{n \geq 1} A_n \in \mathcal{A}$ (stable par union dénombrable)
+    \end{itemize}
+
+}
+\dfn{Mesure} {
+    Soit, $(\Omega , \mathcal{A})$ un ensemble mesurable. On appelle mesure positive sur $(\Omega , \mathcal{A})$
+    une application $\mu$ de $\mathcal{A}$ à valeurs dans $[0;+\mathcal{1}]$ telle que:\\
+    \begin{itemize}
+        \item $\mu (\varnothing) = 0$ (la mesure de l'ensemble nul est égale à 0)
+        \item $\forall A,B \in \mathcal{A} | A \cap B = \varnothing, \mu(A \cap B) = \mu(A) + \mu(B)$ (la mesure de deux ensembles disjoints est la somme des mesures)
+        \item $\forall$ Suite croissante $(A_n)_{n\geq_1} \subset \mathcal{A}, lim_{n \rightarrow \mathcal{1}} (\mu(A_n)) = \mu(\cup_{n \geq 1} A_n)$
+    \end{itemize}
+    \nt{
+        Le triplet $(\Omega , \mathcal{A}, \mu)$ est appelé espace mesurable.
+    }
+}
+
+
+\dfn{Plan de transport}{
 Un plan de transport entre les mesures $\mu$  et  $\nu$ est une mesure de probabilité : \\
-$\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginale $\mu$ et $\nu$.
+$\pi \in \mathcal{P}(\mathbb{R} \times \mathbb{R})$ à pour marginale $\mu$ et $\nu$.
 }
 
 \nt{
-$\Pi \in \mathcal{P}(\mathbb{R}*\mathbb{R})$ à pour marginal $\mu$ et $\nu$ \\
-$\Leftrightarrow \forall $A,B enssemble mesurable avec A$ \subset \mathbb{R}$ et B $\subset \mathbb{R}$
+$\pi \in \mathcal{P}(\mathbb{R} \times \mathbb{R})$ à pour marginal $\mu$ et $\nu$ \\
+$\Leftrightarrow \forall $A,B ensemble mesurable avec A$ \subset \mathbb{R}$ et B $\subset \mathbb{R}$
 $\left\{
 \begin{array}{l}
-\Pi[A\times\mathbb{R}] = \mu[A] \\
-\Pi[\mathbb{R}\times B] = \mu[B]
+\pi[A\times\mathbb{R}] = \mu[A] \\
+\pi[\mathbb{R}\times B] = \mu[B]
 \end{array}
 \right.$\\
 $\Leftrightarrow \forall \varphi \in C^{0}(\mathbb{R}), \Psi \in C^{0}(\mathbb{R}) : $
-$\displaystyle \int_{{\mathbb{R} \times \mathbb{R}}} {\varphi (x) + \Psi (y)} \: d{\Pi (x,y)}$
+$\displaystyle \int_{{\mathbb{R} \times \mathbb{R}}} {\varphi (x) + \Psi (y)} \: d{\pi (x,y)}$
 $= \displaystyle \int {\varphi (x)} \: d{\mu (x)}$
 }
 
 \nt{
-On notera, $\Pi ( \mu , \nu )$ = \{ $\Pi \in \mathcal{P} (\mathbb{R} \times \mathbb{R}) | \Pi$
+On notera, $\Pi ( \mu , \nu )$ = \{ $\pi \in \mathcal{P} (\mathbb{R} \times \mathbb{R}) | \pi$
 a pour marginal, $\mu, \nu$ \}\\
 On remarquera que, $\Pi ( \mu , \nu ) \neq \varnothing $\\
-$I[\Pi] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\Pi (x,y)}$ Le cout total assocé au plan de transport optimal.\\
+$I[\pi] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\pi (x,y)}$ Le cout total associé au plan de transport optimal.\\
 
-On cherche, $\tau_{c} (\mu , \nu ) = INF_{\Pi \in \Pi(\mu, \nu)} (I[\Pi])$
+On cherche, $\tau_{c} (\mu , \nu ) = INF_{\pi \in \Pi(\mu, \nu)} (I[\pi])$
 }
 
-\dfn{}{
-    S'il existe $\Pi_{0} \in \mathcal{P} ( \mathbb{R} \times \mathbb{R} )$
-    tel que $I[\Pi_{0}] = \tau_{c} (\mu , \nu)$\\
-    $\Pi_{0}$ est appelé un \bf{plan de transfert optimal}
+\dfn{Plan de transfert optimal}{
+    S'il existe $\pi_{0} \in \mathcal{P} ( \mathbb{R} \times \mathbb{R} )$ 
+    tel que $I[\pi_{0}] = \tau_{c} (\mu , \nu)$
+    (plan de transport qui minimise le cout total)\\
+    $\pi_{0}$ est appelé un \bf{plan de transfert optimal}
 }
 
 
-\ex{Exemple trivial (Kotorovitch)}{
+\ex{Exemple trivial (Kantorovitch)}{
 $a < b$\\
 $c < d$\\
 $C(x,y) = |x-y|^{2}$\\
 $\mu = \frac{1}{2} (\delta_{a} + \delta_{b})$\\
 $\nu = \frac{1}{2} (\delta_{c} + \delta_{d})$
 \qs{}{
-$\Pi ( \mu , \nu) = ?$
+Trouver : $\pi ( \mu , \nu) = ?$
 }
 \sol{
-$\Pi_{\alpha} = \frac{1}{2} ( \alpha \delta_{(a,c)} + (1 - \alpha ) \delta_{(a,d)} + (1 - \alpha ) \delta_{(b,c)} + \alpha \delta_{(b,d)})$
+$\pi_{\alpha} = \frac{1}{2} ( \alpha \delta_{(a,c)} + (1 - \alpha ) \delta_{(a,d)} + (1 - \alpha ) \delta_{(b,c)} + \alpha \delta_{(b,d)})$
 \boldmath
-$\Pi(\mu,\nu) = \{\Pi_{\alpha} | \alpha \in [0, 1] \}$
+$\Pi(\mu,\nu) = \{\pi_{\alpha} | \alpha \in [0, 1] \}$
 \unboldmath
 }
 \qs{}{
-    Calculer : $I[ \Pi ] \forall \Pi \in \Pi( \mu , \nu )$
+    Calculer : $I[ \pi ] = ?, \forall \pi \in \Pi( \mu , \nu )$
 }
 \sol{
-    $I[\Pi_{\alpha}] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\Pi_{\alpha} (x,y)}$\\
-    $I[\Pi_{\alpha}] = \frac{1}{2}(\alpha C(a,c) + (1 - \alpha) C(a,d) + (1 - \alpha) C(b,c) + \alpha C(b,d)) $\\
-    $I[\Pi_{\alpha}] = \frac{1}{2}(a^{2}+b^{2}+c^{2}+d^{2}) - \alpha (ac + bd) -(1 - \alpha) (ad+ cb)$
+    $I[\pi_{\alpha}] = \displaystyle \int_{\mathbb{R}^{2}} {C(x,y)} \: d{\pi_{\alpha} (x,y)}$\\
+    $I[\pi_{\alpha}] = \frac{1}{2}(\alpha C(a,c) + (1 - \alpha) C(a,d) + (1 - \alpha) C(b,c) + \alpha C(b,d)) $\\
+    $I[\pi_{\alpha}] = \frac{1}{2}(a^{2}+b^{2}+c^{2}+d^{2}) - \alpha (ac + bd) -(1 - \alpha) (ad+ cb)$
 }
 \qs{}{
-    Trouver : $\tau_{c}( \mu , \nu )$
+    Trouver : $\tau_{c}( \mu , \nu ) = ?$
 }
 \sol{
-$P(\alpha) =  \frac{\partial I[\Pi_{\alpha}]}{\partial \alpha}$
+$P(\alpha) =  \frac{\partial I[\pi_{\alpha}]}{\partial \alpha}$
 $\implies P(\alpha) = -ac - bd + ad + cb$;
 $\implies P(\alpha) = (d-c)(a-b) < 0$\\
-Donc, $I[\Pi_{\alpha}]$ atteint son min en $\alpha = 1$\\
-$\Pi_{0} = \Pi_{\alpha = 1}$\\
+Donc, $I[\pi_{\alpha}]$ atteint son min en $\alpha = 1$\\
+$\pi_{0} = \pi_{\alpha = 1} = \tau_c(\mu , \nu)$\\
 Donc, $a \rightarrow c$ et, $b \rightarrow d$
 }
 }
 \begin{figure}[htpb]
    \centering
     \includegraphics[width=0.4\textwidth]{exemple1}
-    \caption{Solution}
+    \caption{Solution de l'exemple de Kotorovitch}
 \end{figure}
+
+\newpage
 \section{La formulation du problème de transfert optimal de Monge}
 \nt{
 On autorise pas le fait de couper les masses.
@@ -184,13 +214,17 @@ $\left\{
     \end{displaymath}
     $\tau_{c}^{M} (\mu , \nu) = \tau_{c} (\mu , \nu)$\\
     D'une part : \\
-    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(T(x),x)} \: d{\mu (x)}$\\
-    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(0,x)} \: d{\mu (x)}$\\
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,T(x))} \: d{\mu (x)}$\\
+    $\tau_{c}^{M} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,a)} \: d{\mu (x)}$\\
     D'autre part : \\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\Pi (x,y)}$\\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{(\mu \otimes \delta_{a})(x,y)}$\\
     $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,y)} \: d{\mu (x)} d{\delta_{a}}$\\
-    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,0)} \: d{\mu (x)}$\\
+    $\tau_{c} (\mu , \nu) = \displaystyle\int_{\mathbb{R}} {C(x,a)} \: d{\mu (x)}$\\
+    \nt{
+        Le problème revient à empiler des grains de sables à partir d'un tas de sable.
+        Dans ce cas les solutions de Kantorovitch et de Monge coincident.
+    }
 }
 
 \ex{}{
@@ -201,22 +235,22 @@ $\left\{
 \end{array}
 \right.$\\
 Les plans de transports $\Pi$ entre $\mu$ et $\nu$ peuvent être représenté par des matrices bistochastiques de tailles n.\\
+\dfn{Matrice bistochastique}{
 $0 \le \Pi_{i,j} \le 1$\\
-$\sum_{i=1}^{n} \Pi_{i,j} = 1$\\
-$\sum_{j=1}^{n} \Pi_{i,j} = 1$\\
-\nt{
-On note $\mathcal{B}_{n}$ l'enssemble des matrices bisctochastiques.\\
+$\sum_{i=1}^{n} \Pi_{i,j} = 1$ (la somme des éléments de chaque ligne vaut 1)\\
+$\sum_{j=1}^{n} \Pi_{i,j} = 1$ (la somme des éléments de chaque colonne vaut 1)\\
+On note $\mathcal{B}_{n}$ l'ensemble des matrices bisctochastiques.
 }
 Soit $\Pi \in \mathcal{B}_{n}$ : $I[\Pi] = \frac{1}{n} \sum_{i=1}^{n} C(x_{i}, y_{i}) \Pi_{i,j}$\\
-$\tau_{c}(\mu ,\nu) = INF_{\Pi \in \mathcal{B}_{n}} \{\frac{1}{n}\sum_{i=1}^{n} \Pi_{i,j} C(x_{i}, y_{i})$\\
-    Il s'agit d'un problème linéaire de minimisation sur un enssemble convexe.\\
+$\tau_{c}(\mu ,\nu) = INF_{\Pi \in \mathcal{B}_{n}} \{\frac{1}{n}\sum_{i=1}^{n} \Pi_{i,j} C(x_{i}, y_{i}) \}$\\
+    Il s'agit d'un problème linéaire de minimisation sur un ensemble convexe.\\
 }
-\mprop{Enssemble convexe}{
+\mprop{Ensemble convexe}{
     $\mathcal{B}_{n}$ est convexe $\Leftrightarrow A,B \in \mathcal{B}_{n}$ alors $\forall \theta \in [0,1] | \theta A + (1 - \theta ) B \in \mathcal{B}_{n}$
 }
 \dfn{Points extremaux}
 {
-    L'enssemble des points extremaux de E convexe est l'enssemble des $e \in E$ tel que :\\
+    L'ensemble des points extremaux de E convexe est l'ensemble des $e \in E$ tel que :\\
     si $e=\theta e_{1} + (1 - \theta ) e_{2}$ avec $\theta \in [0, 1], e_{1} \in E, e_{2} \in E$\\
     Alors $\theta = 0$ ou $\theta = 1$
 }
@@ -236,18 +270,26 @@ $\left\{
 \right.$\\
 }
 
+\newpage
 \section{La dualité de Kantorovitch}
 \subsection{La théorie}%
+
+\nt{
+    Introduction :\\
+    Le problème primal de Kantorovich est un problème d'optimisation qui consiste à minimiser le coût de transport, tandis que le problème dual de Kantorovich est un problème d'optimisation qui consiste à maximiser la valeur de la fonction objectif du problème primal en utilisant les mêmes contraintes. Les deux problèmes sont liés par la théorème de dualité de Kantorovitch.
+}
 
 \thm{Dualité de Kantorovitch}{
     $\mu \in \mathcal{P} (\mathbb{R}^{n}) ;$ $\nu \in \mathcal{P} (\mathbb{R}^{n})$\\
     C semi continue inférieurement ( par exemple C continue)
-    \nt{ Pour $\Pi \in \Pi(\mu , \nu), I[\Pi] = \displaystyle \int_{{}}^{{}} {C(x,y)} \: d{\Pi(x,y)}$ }
+    \nt{ Pour $\pi \in \Pi(\mu , \nu), I[\pi] = \displaystyle \int_{{}}^{{}} {C(x,y)} \: d{\pi(x,y)}$ }
     Soit $(\varphi, \psi ) \in \phi_{c}$\\
     $J(\varphi, \psi) = \displaystyle \int_{\mathbb{R}^{n}} {\varphi(x)} \: d{\mu (x)}$
     $+ \displaystyle \int_{\mathbb{R}^{n}} {\psi(y)} \: d{\nu (y)}$\\
     $\phi_{c} = \{ (\varphi, \psi) \in (\mathcal{C}^{0}( \mathbb{R}^{n} ))^{2}$ tq $\varphi (x) + \psi(y) \le C(x,y)$ presque partout $\}$\\
-    Alors, $INF_{\Pi \in \Pi(\mu, \nu)}I[\Pi] = SUP_{(\varphi , \psi) \in \phi_{c}} J(\varphi , \psi)$
+    \mathversion{bold}
+    Alors, $INF_{\pi \in \Pi(\mu, \nu)}I[\pi] = SUP_{(\varphi , \psi) \in \phi_{c}} J(\varphi , \psi)$
+    \mathversion{normal}
 }
 \nt{
     Interprétation :\\
@@ -275,6 +317,12 @@ $\left\{
     
     
 \end{myproof}
+
+\nt{
+    Remarque :\\
+    Cette correspondance permet de résoudre le problème primal en utilisant des techniques de programmation linéaire plutôt que des techniques de programmation non linéaire, ce qui peut rendre les calculs plus efficaces.
+
+}
 
 \dfn{Les fonction C-concaves (relatif au coût)}{
     Soit, $\varphi : \mathbb{R}^{n} \rightarrow \mathbb{R} \cup \{-\infty\}$\\
@@ -349,7 +397,7 @@ $\left\{
 
 \cor{Les plans de transferts optimals sont caractérisés par leur support}{
     Si $(\varphi , \psi)$ est un maximiseur pour le problème de Kantorovitch dual, alors\\
-    $\Pi \in \Pi(\mu , \nu)$ est un minimiseur pour le problème de Kantorovitch primal si et seulement si $\Pi$ est concentrée sur
+    $\pi \in \Pi(\mu , \nu)$ est un minimiseur pour le problème de Kantorovitch primal si et seulement si $\pi$ est concentrée sur
     $\{ (x,y) \in \mathbb{R}^{n} \times \mathbb{R}^{n} | \varphi (x) + \psi(y) = C(x,y) \}$
 }
 
@@ -360,7 +408,7 @@ On considère un objet indexé par j présent en quantité $\nu_{j}$.\\
 On considère un consomateur indexé par i présent en quantité $\mu_{i}$.\\
 (type(i), quantité(i)) = (i, $\mu_{i}$)\\
 Utilité de l'objet j pour l'agent i.\\
-\textbf{Hypothèse} L'utilité est tranférable.\\
+\textbf{Hypothèse} L'utilité est transférable.\\
 L'objet j a une utilité nette $U_{r,j} - P$.\\
 Pour un système de prix $P_{j}$, l'agent i choisit l'objet $j_{p}$ qui maximise  $U_{ij} - P_{j}$.\\
 Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\sum_{j}  \Pi_{ij} = \mu_{i}$ $; \sum_{i}  \Pi_{ij} = \nu_{j}$ 
@@ -387,7 +435,13 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
     Faire exercice 5, 6, 8 et 9.
 }
 
+\newpage
 \section{La distance de Wasserstein}
+
+\nt{
+    Introduction : \\
+    La distance de Wasserstein, également appelée distance de Monge-Kantorovich, est utilisée en théorie du transport optimal pour mesurer la distance entre deux distributions de probabilité. Elle est basée sur le principe de la minimisation du coût total de transport entre les deux distributions. Elle a pour avantage de permettre de prendre en compte les informations sur les coûts de transport entre les différents points d'origine et de destination.
+}
 
 \dfn{Distance de Wasserstein}{
     On munit $\mathbb{R}^{n}$ d'une distance d.
@@ -401,11 +455,19 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
     \right.$\\
 }
 
-\dfn{}{
-    $\mathcal{P}_{p}(\mathbb{R}^{n})$
+\dfn{Espace de Wasserstein}{
+    L'espace de Wasserstein d'ordre p associé à $\mathbb{R}^{n}$ est défini comme suit:\\
+    $\mathcal{P}_{p}(\mathbb{R}^{n}) = \{\mu | \mu $ est une mesure de probabilité telle que $\int_{\mathbb{R}^{n}} d(x_0 , x)^{p} d\nu(x) < \mathcal{1}  \}$
 }
 
 \nt{
+    Interpretation:\\
+    L'espace de Wasserstein est un espace de probabilités mesurables qui est défini comme l'ensemble des distributions de probabilité qui peuvent être reliées par des plans de transfert optimaux.
+
+}
+
+\nt{
+    Remarque:\\
     Si $p \in \mathcal{P}_{p}(\mathbb{R}^{n})$ alors $\forall y \in \mathbb{R}^{n}$,
     $\displaystyle \int {d(y,x)^{p}} \: d{\mu(x)} < \infty$\\
     Si d est borné $\mathcal{P}_{p}(\mathbb{R}^{n}) = \mathcal{P}(\mathbb{R}^{n})$ 
@@ -420,12 +482,9 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
     }
 }
 
-\mlenma{Lemme de }{
-}
 
 \thm{}{
     $W^{p}$ est une mesure
-
 }
 
 \begin{myproof}
@@ -442,9 +501,10 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
         $\Pi$ à pour marginale $\pi_{1,3}$ sur $\mathbb{R}_{1}^{n} \times \mathbb{R}_{2}^{n}$\\
         $\forall \varphi \in \mathcal(\mathbb{R}^{n} \times \mathbb{R}^{n})$
         $\int {\varphi(x,y)} \: d{\Pi(x,y,z)}$
-        $= \int {\varphi(x,y)} \: d{\pi_{1,3}(x,y)}$
-        
+        $= \int {\varphi(x,y)} \: d{\pi_{1,3}(x,y)}$\\
+        La marginal d'une mesure est une projection d'une mesure sur un sous-espace de dimension inférieure. Elle est utilisée pour décrire les propriétés d'une mesure en se concentrant sur une sous-partie de ses dimensions.
     }
+
 }
 \end{myproof}
 
@@ -463,14 +523,6 @@ Transfert optimal: $SUP_{\Pi} \sum_{ij} U_{ij} \Pi_{ij}$ sous la contrainte $\su
 \ex{}{
 $p=1$\\
 $\tau_1$ s'appelle la distance de Rubinstein-Kantorovitch.
-}
-
-\mprop{}{
-
-}
-
-\ex{}{
-    Le cas $\mathbb{R}^{n} = \mathbb{R}$
 }
 
 \dfn{CDF}{
@@ -507,16 +559,18 @@ tel que $\sum_{i=1}^{n} \lambda_i = 1$
     Peyré / Cuturi : Computational Transfert optimal.
 }
 
+\newpage
 \section{Estimation numérique du transfert optimal}
 \subsection{L'algorithme de Sinkhorn}
 
 \nt{
-Permet de calculer le transfert optimal entre 2 mesures
+    Introduction :\\
+    L'algorithme de Sinkhorn est un algorithme utilisé pour résoudre des problèmes de transport optimal avec des contraintes de positivité et de normalisation sur les plans de transport. Il est basé sur une méthode itérative qui utilise des techniques de programmation linéaire pour optimiser les variables du problème primal et du problème dual, et une technique de régularisation pour garantir la convergence de l'algorithme. Il est particulièrement utile pour résoudre des problèmes de transport optimal avec des coûts de transport qui varient considérablement entre les différents points d'origine et de destination.
 }
 
 \subsubsection{Le contexte}
 \nt {
-    Habituellement présenté dans le cas discret (cela permet de facilement implémenter l'algorithme numériquement)\\
+    Habituellement présenté dans le cas discret\\ 
     $a = \sum_{i=1}^{n} a_i \delta_{x_{i}}$
     $b = \sum_{j=1}^{m} b_j \delta_{y_{j}}$ \\
     $C_{ij} = C(x_i,y_j)$ C correspond à une fonction cout\\
@@ -944,7 +998,7 @@ On considère les mesures $\mu=\frac{1}{2}\left(\delta_{-1}+\delta_2\right)$ et 
     $\frac{1}{6} \ge \alpha + \beta \ge \frac{1}{2}$ \\
     $\Pi_{\alpha , \beta} = \alpha \delta_{(-1,0)} + \beta \delta_{(-1,1)} + (\frac{1}{2} - \alpha - \beta) \delta_{(-1,-1)} + (\frac{1}{3} - \alpha ) \delta_{(2,0)} + (\frac{1}{3} - \beta ) \delta_{(2,1)} +(\alpha + \beta - \frac{1}{6}) \delta_{(2,-1)} $\\
     $I[\Pi_{\alpha \beta}] = \beta + \frac{1}{2} - \alpha - \beta + \frac{1}{3} - \alpha + 2 \alpha + 2 \beta - \frac{1}{3} = \frac{1}{2} + 2 \beta$\\
-    $\Pi(\mu , \nu) = \{ \Pi_{\alpha \beta = 0} | \frac{1}{6} \ge \alpha \ge \frac{1}{3} \}$ \\
+    $\Pi(\mu , \nu) = \{ \Pi_{\alpha \beta = 0} | \forall \alpha, \frac{1}{6} \ge \alpha \ge \frac{1}{3} \}$ \\
 }
 \exr{
  \textbf{Exercice 9.} Soit $A \in M_{n, m}(\mathbb{R}), b \in \mathbb{R}^m, c \in \mathbb{R}^n$. Montrer que

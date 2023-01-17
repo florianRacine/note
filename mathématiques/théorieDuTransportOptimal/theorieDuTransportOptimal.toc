@@ -1,23 +1,23 @@
 \contentsline {chapter}{\numberline {1}Cours}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Introduction}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Formulation du problème}{2}{subsection.1.1.1}%
-\contentsline {section}{\numberline {1.2}Modélisation}{2}{section.1.2}%
-\contentsline {section}{\numberline {1.3}La formulation du problème de transfert optimal de Monge}{4}{section.1.3}%
-\contentsline {section}{\numberline {1.4}La dualité de Kantorovitch}{6}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}La théorie}{6}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Application(s)}{8}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}La distance de Wasserstein}{9}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Estimation numérique du transfert optimal}{11}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}L'algorithme de Sinkhorn}{11}{subsection.1.6.1}%
-\contentsline {subsubsection}{Le contexte}{11}{section*.2}%
-\contentsline {subsubsection}{Régulation entropique}{11}{section*.3}%
-\contentsline {paragraph}{Formulation}{11}{section*.4}%
-\contentsline {subsubsection}{Réécriture du problème de transfert optimal avec regularisation entropique}{12}{section*.5}%
-\contentsline {subsubsection}{L'algorithme de Sinkhorn}{13}{section*.6}%
-\contentsline {subsubsection}{L'algorithme de Sinkhorn}{13}{section*.7}%
-\contentsline {subsection}{\numberline {1.6.2}Formulation dynamique}{13}{subsection.1.6.2}%
-\contentsline {subsubsection}{Théorème de Brenier}{14}{section*.8}%
-\contentsline {subsubsection}{L'équation de transport (1D)}{14}{section*.9}%
-\contentsline {chapter}{\numberline {2}TD}{15}{chapter.2}%
-\contentsline {section}{\numberline {2.1}TD1}{15}{section.2.1}%
+\contentsline {section}{\numberline {1.2}Modélisation}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}La formulation du problème de transfert optimal de Monge}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}La dualité de Kantorovitch}{8}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}La théorie}{8}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Application(s)}{10}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}La distance de Wasserstein}{11}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Estimation numérique du transfert optimal}{14}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}L'algorithme de Sinkhorn}{14}{subsection.1.6.1}%
+\contentsline {subsubsection}{Le contexte}{14}{section*.2}%
+\contentsline {subsubsection}{Régulation entropique}{14}{section*.3}%
+\contentsline {paragraph}{Formulation}{14}{section*.4}%
+\contentsline {subsubsection}{Réécriture du problème de transfert optimal avec regularisation entropique}{15}{section*.5}%
+\contentsline {subsubsection}{L'algorithme de Sinkhorn}{16}{section*.6}%
+\contentsline {subsubsection}{L'algorithme de Sinkhorn}{16}{section*.7}%
+\contentsline {subsection}{\numberline {1.6.2}Formulation dynamique}{16}{subsection.1.6.2}%
+\contentsline {subsubsection}{Théorème de Brenier}{17}{section*.8}%
+\contentsline {subsubsection}{L'équation de transport (1D)}{17}{section*.9}%
+\contentsline {chapter}{\numberline {2}TD}{18}{chapter.2}%
+\contentsline {section}{\numberline {2.1}TD1}{18}{section.2.1}%
 \contentsfinish 
